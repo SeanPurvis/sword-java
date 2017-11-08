@@ -1,12 +1,12 @@
 package com.sosw.sword.api;
 
-public class RiskAssessScores {
+public class RiskAssessmentScore {
 	private int id;
 	private String assessment_type;
 	private String classification;
 	private int score;
 	
-	public RiskAssessScores() {
+	public RiskAssessmentScore() {
 		//Needed for Jackson deserialization
 	}
 
