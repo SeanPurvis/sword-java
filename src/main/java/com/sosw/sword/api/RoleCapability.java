@@ -1,10 +1,10 @@
 package com.sosw.sword.api;
 
-public class RoleCaps {
+public class RoleCapability {
 	private String role;
 	private String cap;
 	
-	public RoleCaps() {
+	public RoleCapability() {
 		//Needed for Jackson deserialization
 	}
 
