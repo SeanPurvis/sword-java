@@ -42,5 +42,4 @@ public class Jail {
 		this.cells = cells;
 	}
 	
-	
 }
