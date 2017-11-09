@@ -2,7 +2,7 @@ package com.sosw.sword.api;
 
 import java.sql.Date;
 
-public class DCIncidents {
+public class DcIncidents {
 	private int caseid;
 	private int id;
 	private Date doa;
@@ -25,7 +25,7 @@ public class DCIncidents {
 	private String releasing_to;
 	private String ordering_county;
 	
-	public DCIncidents() {
+	public DcIncidents() {
 		//Needed for Jackson deserialization
 	}
 
