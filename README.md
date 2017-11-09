@@ -3,11 +3,16 @@
 How to start the Sword application
 ---
 
-1. Run `mvn clean install` to build your application
+1. Run `mvn clean install` to build
 1. Start application with `java -jar target/sword-0.0.1-SNAPSHOT.jar server config.yml`
-1. To check that your application is running enter url `http://localhost:8080`
+1. To check that sword is running enter url: `http://localhost:8080`
 
 Health Check
 ---
 
-To see your applications health enter url `http://localhost:8081/healthcheck`
+To see health enter url: `http://localhost:8081/healthcheck`
+
+Notes
+---
+
+Naming conventions of MySQL tables have to remain the same until a large scale database migration can take place. At this time, that is not possible. 11/9/2017
