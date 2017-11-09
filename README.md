@@ -15,4 +15,5 @@ To see health enter url: `http://localhost:8081/healthcheck`
 Notes
 ---
 
-Naming conventions of MySQL tables have to remain the same until a large scale database migration can take place. At this time, that is not possible. 11/9/2017
+- Currently, the only committed code that has been added to the Dropwizard archetype are POJO Database Table Representations. 
+- Naming conventions of MySQL tables have to remain the same until a large scale database migration can take place. At this time, that is not possible. 11/9/2017
