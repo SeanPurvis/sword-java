@@ -1,7 +1,7 @@
 logging:
   level: INFO
   loggers:
-    com.sosw: DEBUG
+    edu.usm.sosw: DEBUG
     
 database:
   # the name of your JDBC driver
