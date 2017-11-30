@@ -11,4 +11,13 @@ import javax.validation.constraints.*;
 
 public class SwordConfiguration extends Configuration {
     // TODO: implement service configuration
+	
+	@Valid
+	@NotNull
+	@JsonProperty
+	private DataSourceFactory database = new DataSourceFactory();
+	
+	public DataSourceFactory getDataSourceFactory() {
+		return database;
+	}
 }
