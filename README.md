@@ -24,5 +24,5 @@ src/main/java/
 Notes
 ---
 
-- Currently, the only committed code that has been added to the Dropwizard archetype are POJO Database Table Representations. 11/9/2017
+- The User endpoint works all the way from database to client and back. 12/13/17
 - Naming conventions of MySQL tables have to remain the same until a large scale database migration can take place. At this time, that is not possible. 11/9/2017
