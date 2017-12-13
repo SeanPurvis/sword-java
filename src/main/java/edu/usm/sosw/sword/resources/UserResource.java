@@ -16,10 +16,21 @@ import javax.ws.rs.core.MediaType;
 import edu.usm.sosw.sword.api.User;
 import edu.usm.sosw.sword.db.UserDAO;
 
+/**
+ * 
+ * @author Sean T. Purvis
+ * @version 0.0.1
+ * 
+ * The UserResource class provides a JSON REST API end point for user objects and the static_users table. 
+ * Currently, only path parameters are implemented but QueryParameters should be implemented in the future. 
+ * The resource class is exposed by registering it within the SwordApplication run function. 
+ * 
+ */
 @Path("/user")
 @Produces(MediaType.APPLICATION_JSON)
 public class UserResource {
 	
+	// Our database interface instance.
 	UserDAO userDAO;
 	
 	public UserResource(UserDAO userDAO) {
