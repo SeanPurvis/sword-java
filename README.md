@@ -12,6 +12,15 @@ Health Check
 
 To see health enter url: `http://localhost:8081/healthcheck`
 
+Packages
+---
+src/main/java/
+sword - Contains application entry point and configuration file parsing.
+sword.api - contains POJO representations of database tables.
+sword.db - contains DAO interfaces for database tables
+sword.mappers - contains mapper classes that map SQL query results back to POJOs.
+sword.resources - contains resource classes that describe a REST API endpoint for a table.
+
 Notes
 ---
 
