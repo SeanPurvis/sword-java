@@ -7,6 +7,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -16,7 +17,6 @@ import edu.usm.sosw.sword.api.User;
 import edu.usm.sosw.sword.db.UserDAO;
 
 @Path("/user")
-@Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class UserResource {
 	
@@ -28,7 +28,7 @@ public class UserResource {
 	}
 	
 	@GET
-	public User[] getAll(){
+	public List<User> getAll(){
 		return userDAO.getAll();
 	}
 	
@@ -39,10 +39,14 @@ public class UserResource {
 	}
 	
 	@POST
-	public User add(@Valid User user) {
-		userDAO.insert(user);
-		
-		return user;
+	public int add(@Valid User user) {
+		return userDAO.insert(user);
+	}
+	
+	@PUT
+	@Path("/{id}")
+	public void update(@Valid User user) {
+		userDAO.update(user);
 	}
 	
 	@DELETE
