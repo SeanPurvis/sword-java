@@ -4,11 +4,16 @@ import java.util.List;
 
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.BindBean;
+import org.skife.jdbi.v2.sqlobject.GetGeneratedKeys;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
+import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
 import edu.usm.sosw.sword.api.User;
+import edu.usm.sosw.sword.mappers.UserMapper;
 
+
+@RegisterMapper(UserMapper.class)
 public interface UserDAO {
 
 	@SqlUpdate("CREATE TABLE IF NOT EXISTS `static_users` (\n" + 
@@ -24,31 +29,32 @@ public interface UserDAO {
 			"  UNIQUE KEY `username` (`username`)\n" + 
 			") ENGINE=InnoDB AUTO_INCREMENT=203 DEFAULT CHARSET=latin1;\n" + 
 			"")
-	void createUserTable();
+	public void createUserTable();
+
+	@SqlQuery("select * from static_users")
+	public List<User> getAll();
 	
-	@SqlQuery("select * from static_users limit default")
-	User[] getAll();
-	
-	@SqlQuery("select * from static_users WHERE id = :id")
-	User findById(@Bind("id") int id);
+	@SqlQuery("select * from static_users where id = :id")
+	public User findById(@Bind("id") int id);
 	
 	@SqlUpdate("delete from static_users where id = :id")
-	int deleteById(@Bind("id") int id);
+	public void deleteById(@Bind("id") int id);
 	
-	@SqlUpdate("update static_user set"
+	@SqlUpdate("update static_users set"
 			+ " username = :username,"
-			+ " name = :name, password = :password,"
+			+ " name = :name,"
+			+ " password = :password,"
+			+ " phone = :phone,"
 			+ " employer = :employer,"
 			+ " role = :role,"
 			+ " email = :email" 
-			+ "where id = :id")
-	int update(@BindBean User user);
+			+ " where id = :id")
+	public void update(@BindBean User user);
 	
-	@SqlUpdate("insert into static_users (id, username, name, phone, password, employer, role, email)"
-			+ " values (:id, :username, :name, :phone, :password, :employer, :role, :email)")
-	int insert(@BindBean User user);
+	@GetGeneratedKeys
+	@SqlUpdate("insert into static_users (username, name, phone, password, employer, role, email)"
+			+ " values (:username, :name, :phone, :password, :employer, :role, :email)")
+	public int insert(@BindBean User user);
 
-	
-	@SqlUpdate 
-	void close();
+	public void close();
 }
