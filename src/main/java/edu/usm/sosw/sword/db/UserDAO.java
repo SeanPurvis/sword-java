@@ -12,10 +12,25 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 import edu.usm.sosw.sword.api.User;
 import edu.usm.sosw.sword.mappers.UserMapper;
 
+/**
+ * 
+ * @author Sean T. Purvis
+ * @version 0.0.1
+ * 
+ * This interface exists to provide proper access to the static_users table.
+ * SQL is written in the SqlUpdate and SqlQuery annotations above every function 
+ * and then rewritten and executed by JDBI.
+ * 
+ * The UserDAO interface is used by the UserResources class in the resources package.
+ * 
+ * RegisterMapper annotation allows JDBI to bind the UserMapper class to this interface.
+ * Without the RegisterMapper annotation, the SQL query results would not bind properly
+ * to the User Object. 
+ */
 
 @RegisterMapper(UserMapper.class)
 public interface UserDAO {
-
+	
 	@SqlUpdate("CREATE TABLE IF NOT EXISTS `static_users` (\n" + 
 			"  `id` int(6) NOT NULL AUTO_INCREMENT,\n" + 
 			"  `username` varchar(20) NOT NULL,\n" + 
@@ -51,7 +66,7 @@ public interface UserDAO {
 			+ " where id = :id")
 	public void update(@BindBean User user);
 	
-	@GetGeneratedKeys
+	@GetGeneratedKeys // Allows us to return the auto generated id to our client.
 	@SqlUpdate("insert into static_users (username, name, phone, password, employer, role, email)"
 			+ " values (:username, :name, :phone, :password, :employer, :role, :email)")
 	public int insert(@BindBean User user);
