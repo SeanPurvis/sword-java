@@ -2,6 +2,18 @@ package edu.usm.sosw.sword.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * 
+ * @author Sean T. Purvis
+ * @version 0.0.1
+ * 
+ * This class is a representation of the static_users table in Plain Old Java Object form.
+ * With the exception of the empty default constructor, every function is auto generated from the expressed
+ * private methods.
+ * 
+ * An object of this class can be consumed and produced by the UserResource end point. 
+ * 
+ */
 public class User {
 	private int id;
 	private String username;
