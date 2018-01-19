@@ -3,6 +3,7 @@ package edu.usm.sosw.sword;
 import org.skife.jdbi.v2.DBI;
 
 import edu.usm.sosw.sword.db.UserDAO;
+import edu.usm.sosw.sword.resources.Authentication;
 import edu.usm.sosw.sword.resources.UserResource;
 import io.dropwizard.Application;
 import io.dropwizard.jdbi.DBIFactory;
@@ -32,6 +33,7 @@ public class SwordApplication extends Application<SwordConfiguration> {
 		final DBI jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
 		final UserDAO dao = jdbi.onDemand(UserDAO.class);
 		environment.jersey().register(new UserResource(dao));
+		environment.jersey().register(new Authentication());
 	}
 
 }

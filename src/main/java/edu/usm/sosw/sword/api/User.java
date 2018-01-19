@@ -1,5 +1,7 @@
 package edu.usm.sosw.sword.api;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -120,6 +122,43 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+    
+	
+    
+    /**
+     * This method is used to generate a string representing an account password
+     * suitable for database storage. It will be OpenBSD style crypt formatted
+     * hash string of length=60
+     * The bcrypt workload is specified in the final variable below.
+     * @param password_plaintext the user's plaintext password provided when
+     * creating the new account or logging in.
+     * @return String - a string of length 60 that is the bcrypt hashed password in crypt(3) format.
+     */
+    public static String hashPassword(String password_plaintext) {
+    	final int workload = 16;
+    	String salt = BCrypt.gensalt(workload);
+    	String hashed_password = BCrypt.hashpw(password_plaintext, salt);
+    	
+    	return(hashed_password);
+    }
+    
+    /**
+     * This method will verify a computed hash from a plaintext with that of the hash stored in the database. 
+     * @param password_plaintext The user's plaintext password as provided during the login request.
+     * @param stored_hash The account's stored password from the database. 
+     * @return boolean - true if the password matches the password of the stored hash, false otherwise. 
+     */
+    public static boolean checkPassword(String password_plaintext, String stored_hash) {
+    	boolean password_verified = false;
+    	
+    	if(null == stored_hash || !stored_hash.startsWith("$2a$"))
+    		throw new java.lang.IllegalArgumentException("Invalid hash provided for comparison");
+    	
+    	password_verified = BCrypt.checkpw(password_plaintext, stored_hash);
+    	
+    	return(password_verified);
+    }
+    
 }
 
 

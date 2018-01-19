@@ -8,6 +8,7 @@ import org.skife.jdbi.v2.sqlobject.GetGeneratedKeys;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
+import org.skife.jdbi.v2.sqlobject.helpers.MapResultAsBean;
 
 import edu.usm.sosw.sword.api.User;
 import edu.usm.sosw.sword.mappers.UserMapper;
@@ -48,6 +49,9 @@ public interface UserDAO {
 
 	@SqlQuery("select * from static_users")
 	public List<User> getAll();
+	
+	@SqlQuery("select * from static_users where username = :username")
+	public User findByUsername(@Bind("username") String username);
 	
 	@SqlQuery("select * from static_users where id = :id")
 	public User findById(@Bind("id") int id);

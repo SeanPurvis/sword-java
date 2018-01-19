@@ -28,7 +28,7 @@ public class AuthenticationFilter implements ContainerRequestFilter {
 			
 			// Validate the Authorization Header
 			if (!isTokenBasedAuthentication(authorizationHeader)) {
-				abortWithUnaurhtorized(requestContext);
+				abortWithUnauthorized(requestContext);
 				return;
 			}
 			
@@ -54,7 +54,7 @@ public class AuthenticationFilter implements ContainerRequestFilter {
 						.startsWith(AUTHENTICATION_SCHEME.toLowerCase() + " ");
 		}
 		
-		private void aborthWithUnAuthorized(ContainerRequestContext requestContext) {
+		private void abortWithUnauthorized(ContainerRequestContext requestContext) {
 			
 			// Abort the filter chain with a 401 status code response
 			// The WWW-Authenticate header is sent along with the response.
