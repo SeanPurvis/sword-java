@@ -154,7 +154,7 @@ public class MyUser implements Principal {
      * creating the new account or logging in.
      * @return String - a string of length 60 that is the bcrypt hashed password in crypt(3) format.
      */
-    public static String hashPassword(String password_plaintext) {
+    public String hashPassword(String password_plaintext) {
     	final int workload = 16;
     	String salt = BCrypt.gensalt(workload);
     	String hashed_password = BCrypt.hashpw(password_plaintext, salt);
@@ -168,7 +168,7 @@ public class MyUser implements Principal {
      * @param stored_hash The account's stored password from the database. 
      * @return boolean - true if the password matches the password of the stored hash, false otherwise. 
      */
-    public static boolean checkPassword(String password_plaintext, String stored_hash) {
+    public boolean checkPassword(String password_plaintext, String stored_hash) {
     	boolean password_verified = false;
     	
     	if(null == stored_hash || !stored_hash.startsWith("$2a$"))
