@@ -12,7 +12,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import edu.usm.sosw.sword.api.User;
+import edu.usm.sosw.sword.api.MyUser;
 import edu.usm.sosw.sword.db.UserDAO;
 
 /**
@@ -20,50 +20,50 @@ import edu.usm.sosw.sword.db.UserDAO;
  * @author Sean T. Purvis
  * @version 0.0.1
  * 
- * The UserResource class provides a JSON REST API end point for user objects and the static_users table. 
+ * The MyUserResource class provides a JSON REST API end point for MyUser objects and the static_MyUsers table. 
  * Currently, only path parameters are implemented but QueryParameters should be implemented in the future. 
  * The resource class is exposed by registering it within the SwordApplication run function. 
  * 
  */
-@Path("/user")
+@Path("/MyUser")
 @Produces(MediaType.APPLICATION_JSON)
 public class UserResource {
 	
 	// Our database interface instance.
-	UserDAO userDAO;
+	UserDAO UserDAO;
 	
-	public UserResource(UserDAO userDAO) {
-		this.userDAO = userDAO;
-		this.userDAO.createUserTable();
+	public UserResource(UserDAO UserDAO) {
+		this.UserDAO = UserDAO;
+		this.UserDAO.createMyUserTable();
 	}
 	
 	@GET
-	public List<User> getAll(){
-		return userDAO.getAll();
+	public List<MyUser> getAll(){
+		return UserDAO.getAll();
 	}
 	
 	@GET
 	@Path("/{id}")
-	public User get(@PathParam("id") Integer id) {
-		return userDAO.findById(id);
+	public MyUser get(@PathParam("id") Integer id) {
+		return UserDAO.findById(id);
 	}
 	
 	@POST
-	public int add(@Valid User user) {
-		// Pull the user password, pass it to the hashing function, and then set the hash as the object's password.
-		user.setPassword(User.hashPassword(user.getPassword()));
-		return userDAO.insert(user);
+	public int add(@Valid MyUser MyUser) {
+		// Pull the MyUser password, pass it to the hashing function, and then set the hash as the object's password.
+		MyUser.setPassword(MyUser.hashPassword(MyUser.getPassword()));
+		return UserDAO.insert(MyUser);
 	}
 	
 	@PUT
 	@Path("/{id}")
-	public void update(@Valid User user) {
-		userDAO.update(user);
+	public void update(@Valid MyUser MyUser) {
+		UserDAO.update(MyUser);
 	}
 	
 	@DELETE
 	@Path("/{id}")
 	public void delete(@PathParam("id") Integer id) {
-		userDAO.deleteById(id);
+		UserDAO.deleteById(id);
 	}
 }

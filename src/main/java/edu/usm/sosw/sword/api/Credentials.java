@@ -1,6 +1,5 @@
 package edu.usm.sosw.sword.api;
 
-import java.io.Serializable;
 
 /**
  * 
@@ -9,12 +8,11 @@ import java.io.Serializable;
  * Credentials exists to facilitate the sending of username and password data from the client
  * to the API in JSON format. 
  */
-public class Credentials implements Serializable {
+public class Credentials {
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
 	private String username;
 	private String password;
 	
