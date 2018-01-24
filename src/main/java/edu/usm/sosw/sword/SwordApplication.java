@@ -79,7 +79,7 @@ public class SwordApplication extends Application<SwordConfiguration> {
                 .setJwtConsumer(consumer)
                 .setRealm("realm")
                 .setPrefix("Bearer")
-                .setAuthenticator(new ExampleAuthenticator(dao))
+                .setAuthenticator(new JWTAuthenticator(dao))
                 .buildAuthFilter()));
 
         environment.jersey().register(new AuthValueFactoryProvider.Binder<>(Principal.class));
@@ -158,11 +158,11 @@ public class SwordApplication extends Application<SwordConfiguration> {
 	        // Throw an Exception if the token is invalid
 	    }
 	}
-    public class ExampleAuthenticator implements Authenticator<JwtContext, MyUser> {
+    public class JWTAuthenticator implements Authenticator<JwtContext, MyUser> {
     	
     	UserDAO UserDAO;
     	
-    	public ExampleAuthenticator(UserDAO userDAO) {
+    	public JWTAuthenticator(UserDAO userDAO) {
     		this.UserDAO = userDAO;
     	}
         @Override
