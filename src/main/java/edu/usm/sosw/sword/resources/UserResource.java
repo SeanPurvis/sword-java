@@ -38,20 +38,20 @@ public class UserResource {
 	}
 	
 	@GET
-	@PermitAll
+	//@PermitAll
 	public List<MyUser> getAll(){
 		return UserDAO.getAll();
 	}
 	
 	@GET
-	@PermitAll
+	//@PermitAll
 	@Path("/{id}")
 	public MyUser get(@PathParam("id") Integer id) {
 		return UserDAO.findById(id);
 	}
 	
 	@POST
-	@PermitAll
+	//@PermitAll
 	public int add(@Valid MyUser MyUser) {
 		// Pull the MyUser password, pass it to the hashing function, and then set the hash as the object's password.
 		MyUser.setPassword(MyUser.hashPassword(MyUser.getPassword()));
@@ -59,14 +59,14 @@ public class UserResource {
 	}
 	
 	@PUT
-	@PermitAll
+	//@PermitAll
 	@Path("/{id}")
 	public void update(@Valid MyUser MyUser) {
 		UserDAO.update(MyUser);
 	}
 	
 	@DELETE
-	@PermitAll
+	//@PermitAll
 	@Path("/{id}")
 	public void delete(@PathParam("id") Integer id) {
 		UserDAO.deleteById(id);

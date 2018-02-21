@@ -17,6 +17,9 @@ public class Credentials implements Serializable {
 	private String username;
 	private String password;
 	
+	public Credentials() {
+		
+	}
 	public String getUsername() {
 		return username;
 	}
@@ -29,6 +32,5 @@ public class Credentials implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
 	
 }
