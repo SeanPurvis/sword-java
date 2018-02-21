@@ -44,7 +44,7 @@ import java.io.UnsupportedEncodingException;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-import javimport java.*;a.lang.annotation.Target;
+import java.lang.annotation.Target;
 
 
 public class SwordApplication extends Application<SwordConfiguration> {
