@@ -155,7 +155,7 @@ public class MyUser implements Principal {
      * @return String - a string of length 60 that is the bcrypt hashed password in crypt(3) format.
      */
     public String hashPassword(String password_plaintext) {
-    	final int workload = 16;
+    	final int workload = 4;
     	String salt = BCrypt.gensalt(workload);
     	String hashed_password = BCrypt.hashpw(password_plaintext, salt);
     	
