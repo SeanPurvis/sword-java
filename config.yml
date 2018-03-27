@@ -14,10 +14,10 @@ database:
   password: mpd5bb4b
 
   # the JDBC URL for running inside Docker Container
-  #url: jdbc:mysql://db:3306/sword-test
+  url: jdbc:mysql://db:3306/sword-test?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
 
   # the JDBC URL for running on baremetal
-  url: jdbc:mysql://localhost:3306/sword-test?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
+  #url: jdbc:mysql://localhost:3306/sword-test?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
 
   # any properties specific to your JDBC driver:
   properties:
