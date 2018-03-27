@@ -28,8 +28,10 @@ import org.skife.jdbi.v2.DBI;
 import com.github.toastshaman.dropwizard.auth.jwt.JwtAuthFilter;
 
 import edu.usm.sosw.sword.db.UserDAO;
+import edu.usm.sosw.sword.db.YouthDAO;
 import edu.usm.sosw.sword.resources.SecuredResource;
 import edu.usm.sosw.sword.resources.UserResource;
+import edu.usm.sosw.sword.resources.YouthResource;
 import edu.usm.sosw.sword.api.MyUser;
 import io.dropwizard.Application;
 import io.dropwizard.auth.AuthDynamicFeature;
@@ -46,16 +48,15 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-
 public class SwordApplication extends Application<SwordConfiguration> {
-	
+
 	public static void main(final String[] args) throws Exception {
 		new SwordApplication().run(args);
 	}
 
 	@Override
 	public String getName() {
-		return "Sword";
+		return "SWORD";
 	}
 
 	@Override
@@ -64,151 +65,160 @@ public class SwordApplication extends Application<SwordConfiguration> {
 	}
 
 	@Override
-	public void run(final SwordConfiguration configuration, final Environment environment) throws UnsupportedEncodingException {
+	public void run(final SwordConfiguration configuration, final Environment environment)
+			throws UnsupportedEncodingException {
+
+		// Generate JWT secret key, Initialize JDBI interface, and register Database
+		// Access Objects
 		final byte[] key = configuration.getJwtTokenSecret();
 		final DBIFactory factory = new DBIFactory();
 		final DBI jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
 		final UserDAO dao = jdbi.onDemand(UserDAO.class);
+		final YouthDAO YouthDAO = jdbi.onDemand(YouthDAO.class);
 
+		// Create consumer
+		final JwtConsumer consumer = new JwtConsumerBuilder().setAllowedClockSkewInSeconds(30) // allow some leeway in
+																								// validating time based
+																								// claims to account for
+																								// clock skew
+				.setRequireExpirationTime() // the JWT must have an expiration time
+				.setRequireSubject() // the JWT must have a subject claim
+				.setVerificationKey(new HmacKey(key)) // verify the signature with the public key
+				.setRelaxVerificationKeyValidation() // relaxes key length requirement
+				.build(); // create the JwtConsumer instance
 
-        final JwtConsumer consumer = new JwtConsumerBuilder()
-            .setAllowedClockSkewInSeconds(30) // allow some leeway in validating time based claims to account for clock skew
-            .setRequireExpirationTime() // the JWT must have an expiration time
-            .setRequireSubject() // the JWT must have a subject claim
-            .setVerificationKey(new HmacKey(key)) // verify the signature with the public key
-            .setRelaxVerificationKeyValidation() // relaxes key length requirement
-            .build(); // create the JwtConsumer instance
+		// Register Authentication Provider
+		environment.jersey().register(
+				new AuthDynamicFeature(new JwtAuthFilter.Builder<MyUser>().setJwtConsumer(consumer).setRealm("realm")
+						.setPrefix("Bearer").setAuthenticator(new JWTAuthenticator(dao)).buildAuthFilter()));
 
-        environment.jersey().register(new AuthDynamicFeature(
-            new JwtAuthFilter.Builder<MyUser>()
-                .setJwtConsumer(consumer)
-                .setRealm("realm")
-                .setPrefix("Bearer")
-                .setAuthenticator(new JWTAuthenticator(dao))
-                .buildAuthFilter()));
-
-        environment.jersey().register(new AuthValueFactoryProvider.Binder<>(Principal.class));
-        environment.jersey().register(RolesAllowedDynamicFeature.class);
-        environment.jersey().register(new SecuredResource(configuration.getJwtTokenSecret(), dao));
+		// Register the API endpoints on our jersey server
+		environment.jersey().register(new AuthValueFactoryProvider.Binder<>(Principal.class));
+		environment.jersey().register(RolesAllowedDynamicFeature.class);
+		environment.jersey().register(new SecuredResource(configuration.getJwtTokenSecret(), dao));
 		environment.jersey().register(new UserResource(dao));
-		
+		environment.jersey().register(new YouthResource(YouthDAO));
+
 		enableCorsHeaders(environment);
-    }
+	}
 
+	// Enable Cross Site Origin Request Headers
 	private void enableCorsHeaders(Environment environment) {
-        final FilterRegistration.Dynamic cors = environment.servlets().addFilter("CORS", CrossOriginFilter.class);
+		final FilterRegistration.Dynamic cors = environment.servlets().addFilter("CORS", CrossOriginFilter.class);
 
-        // Configure CORS parameters
-        cors.setInitParameter(CrossOriginFilter.ALLOWED_ORIGINS_PARAM, "*");
-        cors.setInitParameter(CrossOriginFilter.ALLOWED_HEADERS_PARAM, "X-Requested-With,Content-Type,Accept,Origin");
-        cors.setInitParameter(CrossOriginFilter.ALLOWED_METHODS_PARAM, "OPTIONS,GET,PUT,POST,DELETE,HEAD");
-        cors.setInitParameter(CrossOriginFilter.ACCESS_CONTROL_ALLOW_ORIGIN_HEADER, "*");
-        // Add URL mapping
-        cors.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
-		
+		// Configure CORS parameters
+		cors.setInitParameter(CrossOriginFilter.ALLOWED_ORIGINS_PARAM, "*");
+		cors.setInitParameter(CrossOriginFilter.ALLOWED_HEADERS_PARAM, "X-Requested-With,Content-Type,Accept,Origin");
+		cors.setInitParameter(CrossOriginFilter.ALLOWED_METHODS_PARAM, "OPTIONS,GET,PUT,POST,DELETE,HEAD");
+		cors.setInitParameter(CrossOriginFilter.ACCESS_CONTROL_ALLOW_ORIGIN_HEADER, "*");
+		// Add URL mapping
+		cors.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
+
 	}
 
 	@NameBinding
 	@Retention(RetentionPolicy.RUNTIME)
-	@Target({ElementType.TYPE, ElementType.METHOD})
-	public @interface Secured { }
+	@Target({ ElementType.TYPE, ElementType.METHOD })
+	public @interface Secured {
+	}
+
 	@Secured
 	@Provider
 	@Priority(Priorities.AUTHENTICATION)
 	public class AuthenticationFilter implements ContainerRequestFilter {
 
 		UserDAO UserDAO;
-		
+
 		AuthenticationFilter(UserDAO userDAO) {
 			this.UserDAO = userDAO;
 		}
-	    private static final String REALM = "example";
-	    private static final String AUTHENTICATION_SCHEME = "Bearer";
 
-	    @Override
-	    public void filter(ContainerRequestContext requestContext) throws IOException {
+		private static final String REALM = "example";
+		private static final String AUTHENTICATION_SCHEME = "Bearer";
 
-	        // Get the Authorization header from the request
-	        String authorizationHeader =
-	                requestContext.getHeaderString(HttpHeaders.AUTHORIZATION);
+		@Override
+		public void filter(ContainerRequestContext requestContext) throws IOException {
 
-	        // Validate the Authorization header
-	        if (!isTokenBasedAuthentication(authorizationHeader)) {
-	            abortWithUnauthorized(requestContext);
-	            return;
-	        }
+			// Get the Authorization header from the request
+			String authorizationHeader = requestContext.getHeaderString(HttpHeaders.AUTHORIZATION);
 
-	        // Extract the token from the Authorization header
-	        String token = authorizationHeader
-	                            .substring(AUTHENTICATION_SCHEME.length()).trim();
+			// Validate the Authorization header
+			if (!isTokenBasedAuthentication(authorizationHeader)) {
+				abortWithUnauthorized(requestContext);
+				return;
+			}
 
-	        try {
+			// Extract the token from the Authorization header
+			String token = authorizationHeader.substring(AUTHENTICATION_SCHEME.length()).trim();
 
-	            // Validate the token
-	            validateToken(token);
+			try {
 
-	        } catch (Exception e) {
-	            abortWithUnauthorized(requestContext);
-	        }
-	    }
+				// Validate the token
+				validateToken(token);
 
-	    private boolean isTokenBasedAuthentication(String authorizationHeader) {
+			} catch (Exception e) {
+				abortWithUnauthorized(requestContext);
+			}
+		}
 
-	        // Check if the Authorization header is valid
-	        // It must not be null and must be prefixed with "Bearer" plus a whitespace
-	        // The authentication scheme comparison must be case-insensitive
-	        return authorizationHeader != null && authorizationHeader.toLowerCase()
-	                    .startsWith(AUTHENTICATION_SCHEME.toLowerCase() + " ");
-	    }
+		private boolean isTokenBasedAuthentication(String authorizationHeader) {
 
-	    private void abortWithUnauthorized(ContainerRequestContext requestContext) {
+			// Check if the Authorization header is valid
+			// It must not be null and must be prefixed with "Bearer" plus a whitespace
+			// The authentication scheme comparison must be case-insensitive
+			return authorizationHeader != null
+					&& authorizationHeader.toLowerCase().startsWith(AUTHENTICATION_SCHEME.toLowerCase() + " ");
+		}
 
-	        // Abort the filter chain with a 401 status code response
-	        // The WWW-Authenticate header is sent along with the response
-	        requestContext.abortWith(
-	                Response.status(Response.Status.UNAUTHORIZED)
-	                        .header(HttpHeaders.WWW_AUTHENTICATE, 
-	                                AUTHENTICATION_SCHEME + " realm=\"" + REALM + "\"")
-	                        .build());
-	    }
+		private void abortWithUnauthorized(ContainerRequestContext requestContext) {
 
-	    private void validateToken(String token) throws Exception {
-	        // Check if the token was issued by the server and if it's not expired
-	        // Throw an Exception if the token is invalid
-	    }
+			// Abort the filter chain with a 401 status code response
+			// The WWW-Authenticate header is sent along with the response
+			requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED)
+					.header(HttpHeaders.WWW_AUTHENTICATE, AUTHENTICATION_SCHEME + " realm=\"" + REALM + "\"").build());
+		}
+
+		private void validateToken(String token) throws Exception {
+			// Check if the token was issued by the server and if it's not expired
+			// Throw an Exception if the token is invalid
+		}
 	}
-    public class JWTAuthenticator implements Authenticator<JwtContext, MyUser> {
-    	
-    	UserDAO UserDAO;
-    	
-    	public JWTAuthenticator(UserDAO userDAO) {
-    		this.UserDAO = userDAO;
-    	}
-        @Override
-        public Optional<MyUser> authenticate(JwtContext context) {
-            // Provide your own implementation to lookup users based on the principal attribute in the
-            // JWT Token. E.g.: lookup users from a database etc.
-            // This method will be called once the token's signature has been verified
 
-            // In case you want to verify different parts of the token you can do that here.
-            // E.g.: Verifying that the provided token has not expired.
+	public class JWTAuthenticator implements Authenticator<JwtContext, MyUser> {
 
-            // All JsonWebTokenExceptions will result in a 401 Unauthorized response.
+		UserDAO UserDAO;
 
-            try {
-       		 if (context.getJwtClaims().getExpirationTime().isAfter(NumericDate.now())) {
-                final String subject = context.getJwtClaims().getSubject();
-                MyUser user = UserDAO.findByUsername(subject);
-           
-                if (user.getId() != null) {
-                    return Optional.of(new MyUser(user.getId(), user.getUsername()));
-                }
-       		 }
-       		 return Optional.empty();
-            }
-            catch (MalformedClaimException e) { return Optional.empty(); }
-            
-        }
-    }
+		public JWTAuthenticator(UserDAO userDAO) {
+			this.UserDAO = userDAO;
+		}
+
+		@Override
+		public Optional<MyUser> authenticate(JwtContext context) {
+			// Provide your own implementation to lookup users based on the principal
+			// attribute in the
+			// JWT Token. E.g.: lookup users from a database etc.
+			// This method will be called once the token's signature has been verified
+
+			// In case you want to verify different parts of the token you can do that here.
+			// E.g.: Verifying that the provided token has not expired.
+
+			// All JsonWebTokenExceptions will result in a 401 Unauthorized response.
+
+			try {
+				if (context.getJwtClaims().getExpirationTime().isAfter(NumericDate.now())) {
+					final String subject = context.getJwtClaims().getSubject();
+					MyUser user = UserDAO.findByUsername(subject);
+
+					if (user.getId() != null) {
+						return Optional.of(new MyUser(user.getId(), user.getUsername()));
+					}
+				}
+				return Optional.empty();
+			} catch (MalformedClaimException e) {
+				return Optional.empty();
+			}
+
+		}
+	}
 
 }

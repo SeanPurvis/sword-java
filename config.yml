@@ -13,8 +13,11 @@ database:
   # the password
   password: mpd5bb4b
 
-  # the JDBC URL
-  url: jdbc:mysql://db:3306/sword-test
+  # the JDBC URL for running inside Docker Container
+  #url: jdbc:mysql://db:3306/sword-test
+
+  # the JDBC URL for running on baremetal
+  url: jdbc:mysql://localhost:3306/sword-test?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
 
   # any properties specific to your JDBC driver:
   properties:
@@ -43,3 +46,4 @@ database:
 
   # the minimum amount of time an connection must sit idle in the pool before it is eligible for eviction
   minIdleTime: 1 minute
+
