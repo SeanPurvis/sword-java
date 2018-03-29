@@ -16,14 +16,15 @@ import edu.usm.sosw.sword.api.MyUser;
 import edu.usm.sosw.sword.db.UserDAO;
 
 /**
+ * The UserResource class provides a JSON REST API end point for User objects and the <code>youths</code> table. 
+ * Currently, only path parameters are implemented but QueryParameters should be implemented in the future. 
+ * The resource class is exposed by registering it within the SwordApplication run function. 
  * 
  * @author Sean T. Purvis
  * @version 0.0.1
  * 
- * The MyUserResource class provides a JSON REST API end point for MyUser objects and the static_MyUsers table. 
- * Currently, only path parameters are implemented but QueryParameters should be implemented in the future. 
- * The resource class is exposed by registering it within the SwordApplication run function. 
- * 
+ * @see MyUser 
+ * @see UserDAO
  */
 @Path("/api/v1/user")
 @Produces(MediaType.APPLICATION_JSON)

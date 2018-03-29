@@ -12,20 +12,22 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 import edu.usm.sosw.sword.api.County;
 import edu.usm.sosw.sword.mappers.CountyMapper;
 
-/**
- * 
- * @author Sean T. Purvis
- * @version 0.0.1
- * 
- * This interface exists to provide proper access to the static_counties table.
- * SQL is written in the SqlUpdate and SqlQuery annotations above every function 
+/** 
+ * This interface exists to provide proper access to the <code>static_counties</code> table.
+ * SQL is written in the <code>SqlUpdate and SqlQuery</code> annotations above every function 
  * and then rewritten and executed by JDBI.
  * 
- * The CountyDAO interface is used by the CountyResources class in the resources package.
+ * The <code>CountyDAO</code> interface is used by the <code>CountyResources</code> class in the <code>resources</code> package.
  * 
- * RegisterMapper annotation allows JDBI to bind the CountyMapper class to this interface.
- * Without the RegisterMapper annotation, the SQL query results would not bind properly
- * to the County Object. 
+ * <code>RegisterMapper</code> annotation allows JDBI to bind the <code>CountyMapper</code> class to this interface.
+ * Without the <code>RegisterMapper</code> annotation, the SQL query results would not bind properly
+ * to the </code>County Object.</code>
+ * 
+ * @author Sean T. Purvis
+ * @version 0.0.1 
+ * @see County & 
+ * @see CountyMapper
+ * @see CountyResource
  */
 @RegisterMapper(CountyMapper.class)
 public interface CountyDAO {

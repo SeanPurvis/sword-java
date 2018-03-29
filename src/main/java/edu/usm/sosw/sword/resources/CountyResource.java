@@ -16,13 +16,17 @@ import edu.usm.sosw.sword.api.County;
 import edu.usm.sosw.sword.db.CountyDAO;
 
 /**
+ * The <code>County</code> class provides a JSON REST API end point for County objects and the <code>static_counties</code> table. 
+ * 
+ * Currently, only path parameters are implemented but QueryParameters should be implemented in the future. 
+ * The resource class is exposed by registering it within the SwordApplication run function.
  * 
  * @author Sean T. Purvis
- * @version 0.0.1
+ * @version 0.0.1 
  * 
- * The MyCounty class provides a JSON REST API end point for County objects and the static_counties table. 
- * Currently, only path parameters are implemented but QueryParameters should be implemented in the future. 
- * The resource class is exposed by registering it within the SwordApplication run function. 
+ * @see County
+ * @see CountyDAO
+ * @see CountyMapper
  */
 @Path("/api/v1/county")
 @Produces(MediaType.APPLICATION_JSON)

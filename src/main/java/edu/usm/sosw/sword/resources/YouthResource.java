@@ -15,15 +15,17 @@ import javax.ws.rs.core.MediaType;
 
 import edu.usm.sosw.sword.api.Youth;
 import edu.usm.sosw.sword.db.YouthDAO;
+
 /**
+ * The YouthResource class provides a JSON REST API end point for Youth objects and the <code>youths</code> table. 
+ * Currently, only path parameters are implemented but QueryParameters should be implemented in the future. 
+ * The resource class is exposed by registering it within the SwordApplication run function. 
  * 
  * @author Sean T. Purvis
  * @version 0.0.1
  * 
- * The YouthResource class provides a JSON REST API end point for Youth objects and the youths table. 
- * Currently, only path parameters are implemented but QueryParameters should be implemented in the future. 
- * The resource class is exposed by registering it within the SwordApplication run function. 
- * 
+ * @see Youth 
+ * @see YouthDAO
  */
 @Path("/api/v1/youth")
 @Produces(MediaType.APPLICATION_JSON)

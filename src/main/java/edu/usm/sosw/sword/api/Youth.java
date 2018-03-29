@@ -5,18 +5,15 @@ import java.sql.Date;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * 
+ * This class is a representation of the <code>youths</code> table in Plain Old Java Object form.
+ * With the exception of the empty default constructor, every function is auto generated from the expressed
+ * private methods. An object of this class can be consumed and produced by the <code>YouthResource</code> end point.
  * @author Sean T. Purvis
  * @version 0.0.1
- * 
- * This class is a representation of the youth table in Plain Old Java Object form.
- * With the exception of the empty default constructor, every function is auto generated from the expressed
- * private methods.
- * 
- * An object of this class can be consumed and produced by the YouthResource end point. 
- * 
+ * @see YouthMapper 
+ * @see YouthDAO 
+ * @see YouthResource
  */
-
 public class Youth {
 	private int id;
 	private String ssn;
