@@ -29,14 +29,17 @@ import com.github.toastshaman.dropwizard.auth.jwt.JwtAuthFilter;
 
 import edu.usm.sosw.sword.db.UserDAO;
 import edu.usm.sosw.sword.db.YouthDAO;
+import edu.usm.sosw.sword.db.CountyDAO;
 import edu.usm.sosw.sword.resources.SecuredResource;
 import edu.usm.sosw.sword.resources.UserResource;
 import edu.usm.sosw.sword.resources.YouthResource;
+import edu.usm.sosw.sword.resources.CountyResource;
 import edu.usm.sosw.sword.api.MyUser;
 import io.dropwizard.Application;
 import io.dropwizard.auth.AuthDynamicFeature;
 import io.dropwizard.auth.AuthValueFactoryProvider;
 import io.dropwizard.auth.Authenticator;
+import io.dropwizard.configuration.EnvironmentVariableLookup;
 import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -73,14 +76,18 @@ public class SwordApplication extends Application<SwordConfiguration> {
 		final byte[] key = configuration.getJwtTokenSecret();
 		final DBIFactory factory = new DBIFactory();
 		final DBI jdbi = factory.build(environment, configuration.getDataSourceFactory(), "mysql");
+		
+		// Initialize all DAOs for use with jersey.
 		final UserDAO dao = jdbi.onDemand(UserDAO.class);
 		final YouthDAO YouthDAO = jdbi.onDemand(YouthDAO.class);
+		final CountyDAO CountyDAO = jdbi.onDemand(CountyDAO.class);
 
 		// Create consumer
-		final JwtConsumer consumer = new JwtConsumerBuilder().setAllowedClockSkewInSeconds(30) // allow some leeway in
-																								// validating time based
-																								// claims to account for
-																								// clock skew
+		final JwtConsumer consumer = new JwtConsumerBuilder().setAllowedClockSkewInSeconds(30) 
+				// allow some leeway in
+				// validating time based
+				// claims to account for
+				// clock skew
 				.setRequireExpirationTime() // the JWT must have an expiration time
 				.setRequireSubject() // the JWT must have a subject claim
 				.setVerificationKey(new HmacKey(key)) // verify the signature with the public key
@@ -92,12 +99,13 @@ public class SwordApplication extends Application<SwordConfiguration> {
 				new AuthDynamicFeature(new JwtAuthFilter.Builder<MyUser>().setJwtConsumer(consumer).setRealm("realm")
 						.setPrefix("Bearer").setAuthenticator(new JWTAuthenticator(dao)).buildAuthFilter()));
 
-		// Register the API endpoints on our jersey server
+		// Register the API end points with jersey.
 		environment.jersey().register(new AuthValueFactoryProvider.Binder<>(Principal.class));
 		environment.jersey().register(RolesAllowedDynamicFeature.class);
 		environment.jersey().register(new SecuredResource(configuration.getJwtTokenSecret(), dao));
 		environment.jersey().register(new UserResource(dao));
 		environment.jersey().register(new YouthResource(YouthDAO));
+		environment.jersey().register(new CountyResource(CountyDAO));
 
 		enableCorsHeaders(environment);
 	}

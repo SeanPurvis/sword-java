@@ -18,7 +18,8 @@ import edu.usm.sosw.sword.api.MyUser;
  */
 public class UserMapper implements ResultSetMapper<MyUser> {
 	public MyUser map(int index, ResultSet r, StatementContext ctx) throws SQLException {
-		return new MyUser(r.getBigDecimal("id"), r.getString("username"), r.getString("name"), r.getString("phone"),
-				r.getString("password"), r.getString("employer"), r.getString("role"), r.getString("email"));
+		return new MyUser(r.getBigDecimal("id"), r.getString("username"), r.getString("name"),
+				r.getString("phone"),r.getString("password"), r.getString("employer"), r.getString("role"),
+				r.getString("email"));
 	}
 }

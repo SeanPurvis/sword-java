@@ -25,7 +25,7 @@ import edu.usm.sosw.sword.db.UserDAO;
  * The resource class is exposed by registering it within the SwordApplication run function. 
  * 
  */
-@Path("/MyUser")
+@Path("/api/v1/user")
 @Produces(MediaType.APPLICATION_JSON)
 public class UserResource {
 	

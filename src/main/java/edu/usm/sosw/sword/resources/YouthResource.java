@@ -25,7 +25,7 @@ import edu.usm.sosw.sword.db.YouthDAO;
  * The resource class is exposed by registering it within the SwordApplication run function. 
  * 
  */
-@Path("/youth")
+@Path("/api/v1/youth")
 @Produces(MediaType.APPLICATION_JSON)
 public class YouthResource {
 	

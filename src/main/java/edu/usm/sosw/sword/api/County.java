@@ -7,6 +7,12 @@ public class County {
 	public County() {
 		//Needed for Jackson deserialization
 	}
+	
+	public County(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
 
 	public int getId() {
 		return id;
