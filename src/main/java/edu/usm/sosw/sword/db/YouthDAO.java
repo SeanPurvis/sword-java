@@ -12,17 +12,21 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 import edu.usm.sosw.sword.api.Youth;
 import edu.usm.sosw.sword.mappers.YouthMapper;
 
-/**
+/** 
+ * This interface exists to provide proper access to the <code>youths</code> table.
+ * SQL is written in the <code>SqlUpdate and SqlQuery</code> annotations above every function 
+ * and then rewritten and executed by JDBI.
+ * 
+ * The <code>YouthDAO</code> interface is used by the <code>YouthResources</code> class in the <code>resources</code> package.
+ * 
+ * <code>RegisterMapper</code> annotation allows JDBI to bind the <code>YouthMapper</code> class to this interface.
+ * Without the <code>RegisterMapper</code> annotation, the SQL query results would not bind properly
+ * to the </code>Youth Object.</code>
  * 
  * @author Sean T. Purvis
- * @version 0.0.1
- *
- * This interface exists to provide access to the youth table through the JDBI library.
- * SQL is written in the QUERY and UPDATE annotations and then executed by JDBI.
- * 
- * The YouthDAO class is used by the YouthResource class in the resources package.
- * Without the RegisterMapper annotation, the SQL query results would not bind properly to
- * the Youth object.
+ * @version 0.0.1 
+ * @see Youth 
+ * @see YouthMapper
  */
 @RegisterMapper(YouthMapper.class)
 public interface YouthDAO {

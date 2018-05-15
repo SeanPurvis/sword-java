@@ -8,18 +8,15 @@ import org.mindrot.jbcrypt.BCrypt;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * 
+ * This class is a representation rows of the <code>static_users</code> table in Plain Old Java Object form.
+ * With the exception of the empty default constructor, every function is auto generated from the expressed
+ * private methods. An object of this class can be consumed and produced by the <code>UserResource</code> end point.
  * @author Sean T. Purvis
  * @version 0.0.1
- * 
- * This class is a representation of the static_users table in Plain Old Java Object form.
- * With the exception of the empty default constructor, every function is auto generated from the expressed
- * private methods.
- * 
- * An object of this class can be consumed and produced by the UserResource end point. 
- * 
+ * @see UserMapper
+ * @see UserDAO 
+ * @see UserResource
  */
-
 public class MyUser implements Principal {
 
     private BigDecimal id;

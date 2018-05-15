@@ -12,22 +12,22 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 import edu.usm.sosw.sword.api.MyUser;
 import edu.usm.sosw.sword.mappers.UserMapper;
 
-/**
- * 
- * @author Sean T. Purvis
- * @version 0.0.1
- * 
- * This interface exists to provide proper access to the static_users table.
- * SQL is written in the SqlUpdate and SqlQuery annotations above every function 
+/** 
+ * This interface exists to provide proper access to the <code>static_users</code> table.
+ * SQL is written in the <code>SqlUpdate and SqlQuery</code> annotations above every function 
  * and then rewritten and executed by JDBI.
  * 
- * The MyUserDAO interface is used by the MyUserResources class in the resources package.
+ * The <code>UserDAO</code> interface is used by the <code>UserResources</code> class in the <code>resources</code> package.
  * 
- * RegisterMapper annotation allows JDBI to bind the MyUserMapper class to this interface.
- * Without the RegisterMapper annotation, the SQL query results would not bind properly
- * to the MyUser Object. 
+ * <code>RegisterMapper</code> annotation allows JDBI to bind the <code>UserMapper</code> class to this interface.
+ * Without the <code>RegisterMapper</code> annotation, the SQL query results would not bind properly
+ * to the </code>User Object.</code>
+ * 
+ * @author Sean T. Purvis
+ * @version 0.0.1 
+ * @see MyUser 
+ * @see UserMapper
  */
-
 @RegisterMapper(UserMapper.class)
 public interface UserDAO {
 	

@@ -2,6 +2,15 @@ package edu.usm.sosw.sword.api;
 
 import java.sql.Date;
 
+/**
+ * A Plain Old Java Object implementation of the rows in the cases table.
+ * 
+ * @author Sean T. Purvis
+ * @version 0.0.1
+ * @see CaseDAO
+ * @see CaseResource
+ */
+
 public class Case {
 	private String did;
 	private int id;
