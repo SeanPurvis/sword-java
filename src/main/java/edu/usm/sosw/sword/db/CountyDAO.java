@@ -27,7 +27,6 @@ import edu.usm.sosw.sword.mappers.CountyMapper;
  * @version 0.0.1 
  * @see County & 
  * @see CountyMapper
- * @see CountyResource
  */
 @RegisterMapper(CountyMapper.class)
 public interface CountyDAO {

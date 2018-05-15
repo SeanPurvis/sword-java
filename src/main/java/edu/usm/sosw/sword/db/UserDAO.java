@@ -26,8 +26,7 @@ import edu.usm.sosw.sword.mappers.UserMapper;
  * @author Sean T. Purvis
  * @version 0.0.1 
  * @see MyUser 
- * @see UserMapper 
- * @see UserResource
+ * @see UserMapper
  */
 @RegisterMapper(UserMapper.class)
 public interface UserDAO {

@@ -26,7 +26,6 @@ import edu.usm.sosw.sword.db.CountyDAO;
  * 
  * @see County
  * @see CountyDAO
- * @see CountyMapper
  */
 @Path("/api/v1/county")
 @Produces(MediaType.APPLICATION_JSON)

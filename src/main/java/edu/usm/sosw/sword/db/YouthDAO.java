@@ -27,7 +27,6 @@ import edu.usm.sosw.sword.mappers.YouthMapper;
  * @version 0.0.1 
  * @see Youth 
  * @see YouthMapper
- * @see YouthResource
  */
 @RegisterMapper(YouthMapper.class)
 public interface YouthDAO {
