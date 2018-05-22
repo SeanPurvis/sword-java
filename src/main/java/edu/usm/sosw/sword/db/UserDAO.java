@@ -44,19 +44,19 @@ public interface UserDAO {
 			"  UNIQUE KEY `username` (`username`)\n" + 
 			") ENGINE=InnoDB AUTO_INCREMENT=203 DEFAULT CHARSET=latin1;\n" + 
 			"")
-	public void createMyUserTable();
+	void createMyUserTable();
 
 	@SqlQuery("select * from static_users")
-	public List<MyUser> getAll();
+	List<MyUser> getAll();
 	
 	@SqlQuery("select * from static_users where username = :username")
-	public MyUser findByUsername(@Bind("username") String username);
+	MyUser findByUsername(@Bind("username") String username);
 	
 	@SqlQuery("select * from static_users where id = :id")
-	public MyUser findById(@Bind("id") int id);
+	MyUser findById(@Bind("id") int id);
 	
 	@SqlUpdate("delete from static_users where id = :id")
-	public void deleteById(@Bind("id") int id);
+	void deleteById(@Bind("id") int id);
 	
 	@SqlUpdate("update static_users set"
 			+ " username = :username,"
@@ -67,12 +67,12 @@ public interface UserDAO {
 			+ " role = :role,"
 			+ " email = :email" 
 			+ " where id = :id")
-	public void update(@BindBean MyUser MyUser);
+	void update(@BindBean MyUser MyUser);
 	
 	@GetGeneratedKeys // Allows us to return the auto generated id to our client.
 	@SqlUpdate("insert into static_users (username, name, phone, password, employer, role, email)"
 			+ " values (:username, :name, :phone, :password, :employer, :role, :email)")
-	public int insert(@BindBean MyUser MyUser);
+	int insert(@BindBean MyUser MyUser);
 
-	public void close();
+	void close();
 }

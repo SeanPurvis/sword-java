@@ -39,31 +39,31 @@ public interface CounselorDAO {
             "  `status` int(1) DEFAULT NULL,\n" +
             "  PRIMARY KEY (`id`)\n" +
             ") ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=latin1;\n")
-    public void createCounselorsTable();
+    void createCounselorsTable();
 
     @SqlQuery("select * from counselors")
-    public List<Counselor> getAll();
+    List<Counselor> getAll();
 
     @SqlQuery("select * from counselors where name = :name")
-    public Counselor findByName(@Bind("name") String name);
+    Counselor findByName(@Bind("name") String name);
 
     @SqlQuery("select * from counselors where id = :id")
-    public Counselor findById(@Bind("id") int id);
+    Counselor findById(@Bind("id") int id);
 
     @SqlUpdate("delete from counselors where id = :id")
-    public void deleteById(@Bind("id") int id);
+    void deleteById(@Bind("id") int id);
 
     @SqlUpdate("update counselors set"
             + " name = :name,"
             + " email = :email,"
             + " status = :status,"
             + " where id = :id")
-    public void update(@BindBean Counselor Counselor);
+    void update(@BindBean Counselor Counselor);
 
     @GetGeneratedKeys // Allows us to return the auto generated id to our client.
     @SqlUpdate("insert into counselors (name )"
             + " values (:name)")
-    public int insert(@BindBean Counselor Counselor);
+    int insert(@BindBean Counselor Counselor);
 
-    public void close();
+    void close();
 }

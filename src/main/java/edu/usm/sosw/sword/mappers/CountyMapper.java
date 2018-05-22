@@ -16,7 +16,6 @@ import edu.usm.sosw.sword.api.County;
  * @type County Object
  * @return a new <code>County</code> object with SQL Query results populated into the data members.
  * @see County
- * @see CountyDAO
  */
 public class CountyMapper implements ResultSetMapper<County> {
 	public County map(int index, ResultSet r, StatementContext ctx) throws SQLException {

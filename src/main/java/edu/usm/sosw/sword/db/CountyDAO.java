@@ -38,29 +38,29 @@ public interface CountyDAO {
 			"  UNIQUE KEY `countiename` (`name`)\n" + 
 			") ENGINE=InnoDB AUTO_INCREMENT=203 DEFAULT CHARSET=latin1;\n" + 
 			"")
-	public void createCountyTable();
+	void createCountyTable();
 	
 	@SqlQuery("select * from static_counties")
-	public List<County> getAll();
+	List<County> getAll();
 	
 	@SqlQuery("select * from static_counties where name = :name")
-	public County findByName(@Bind("name") String name);
+	County findByName(@Bind("name") String name);
 	
 	@SqlQuery("select * from static_counties where id = :id")
-	public County findById(@Bind("id") int id);
+	County findById(@Bind("id") int id);
 	
 	@SqlUpdate("delete from static_counties where id = :id")
-	public void deleteById(@Bind("id") int id);
+	void deleteById(@Bind("id") int id);
 	
 	@SqlUpdate("update static_counties set"
 			+ " name = :name,"
 			+ " where id = :id")
-	public void update(@BindBean County County);
+	void update(@BindBean County County);
 	
 	@GetGeneratedKeys // Allows us to return the auto generated id to our client.
 	@SqlUpdate("insert into static_counties (name )"
 			+ " values (:name)")
-	public int insert(@BindBean County County);
+	int insert(@BindBean County County);
 
-	public void close();
+	void close();
 }
