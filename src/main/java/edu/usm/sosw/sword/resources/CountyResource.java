@@ -2,6 +2,7 @@ package edu.usm.sosw.sword.resources;
 
 import java.util.List;
 
+import javax.annotation.security.PermitAll;
 import javax.validation.Valid;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -39,28 +40,33 @@ public class CountyResource {
 	}
 	
 	@GET
+	@PermitAll
 	public List<County> getAll(){
 		return CountyDAO.getAll();
 	}
 	
 	@GET
+	@PermitAll
 	@Path("/{id}")
 	public County get(@PathParam("id") Integer id) {
 		return CountyDAO.findById(id);
 	}
 	
 	@POST
+	@PermitAll
 	public int add(@Valid County County) {
 		return CountyDAO.insert(County);
 	}
 	
 	@PUT
+	@PermitAll
 	@Path("/{id}")
 	public void update(@Valid County County) {
 		CountyDAO.update(County);
 	}
 	
 	@DELETE
+	@PermitAll
 	@Path("/{id}")
 	public void delete(@PathParam("id") Integer id) {
 		CountyDAO.deleteById(id);

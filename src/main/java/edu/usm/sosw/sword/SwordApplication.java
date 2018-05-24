@@ -16,7 +16,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
 import edu.usm.sosw.sword.api.Counselor;
-import edu.usm.sosw.sword.db.CounselorDAO;
+import edu.usm.sosw.sword.db.*;
 import edu.usm.sosw.sword.resources.*;
 import org.eclipse.jetty.servlets.CrossOriginFilter;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
@@ -30,9 +30,6 @@ import org.skife.jdbi.v2.DBI;
 
 import com.github.toastshaman.dropwizard.auth.jwt.JwtAuthFilter;
 
-import edu.usm.sosw.sword.db.UserDAO;
-import edu.usm.sosw.sword.db.YouthDAO;
-import edu.usm.sosw.sword.db.CountyDAO;
 import edu.usm.sosw.sword.api.MyUser;
 import io.dropwizard.Application;
 import io.dropwizard.auth.AuthDynamicFeature;
@@ -81,6 +78,7 @@ public class SwordApplication extends Application<SwordConfiguration> {
 		final YouthDAO YouthDAO = jdbi.onDemand(YouthDAO.class);
 		final CountyDAO CountyDAO = jdbi.onDemand(CountyDAO.class);
 		final CounselorDAO CounselorDAO = jdbi.onDemand(CounselorDAO.class);
+		final CourtRelatedDAO CourtRelatedDAO = jdbi.onDemand(CourtRelatedDAO.class);
 
 		// Create consumer
 		final JwtConsumer consumer = new JwtConsumerBuilder().setAllowedClockSkewInSeconds(30) 
@@ -107,6 +105,7 @@ public class SwordApplication extends Application<SwordConfiguration> {
 		environment.jersey().register(new YouthResource(YouthDAO));
 		environment.jersey().register(new CountyResource(CountyDAO));
 		environment.jersey().register(new CounselorResource(CounselorDAO));
+		environment.jersey().register(new CourtRelatedResource(CourtRelatedDAO));
 
 		enableCorsHeaders(environment);
 	}
