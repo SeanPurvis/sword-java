@@ -3,6 +3,7 @@ package edu.usm.sosw.sword.resources;
 import edu.usm.sosw.sword.api.Counselor;
 import edu.usm.sosw.sword.db.CounselorDAO;
 
+import javax.annotation.security.PermitAll;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -32,20 +33,25 @@ public class CounselorResource {
     }
 
     @GET
+    @PermitAll
     public List<Counselor> getAll() { return CounselorDAO.getAll(); }
 
     @GET
+    @PermitAll
     @Path("/{id}")
     public Counselor get(@PathParam("id") Integer id) { return CounselorDAO.findById(id); }
 
     @POST
+    @PermitAll
     public int add(@Valid Counselor Counselor) { return CounselorDAO.insert(Counselor); }
 
     @PUT
+    @PermitAll
     @Path("/{id}")
     public void update(@Valid Counselor Counselor) { CounselorDAO.update(Counselor); }
 
     @DELETE
+    @PermitAll
     @Path("/{id}")
     public void delete(@PathParam("id") Integer id) { CounselorDAO.deleteById(id); }
 

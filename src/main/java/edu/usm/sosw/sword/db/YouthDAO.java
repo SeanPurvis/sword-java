@@ -45,19 +45,19 @@ public interface YouthDAO {
 			"  PRIMARY KEY (`id`)\n" + 
 			") ENGINE=InnoDB AUTO_INCREMENT=144634565 DEFAULT CHARSET=latin1;\n" + 
 			"")
-	public void createYouthTable();
+	void createYouthTable();
 	
 	@SqlQuery("select * from youths")
-	public List<Youth> getAll();
+	List<Youth> getAll();
 	
 	@SqlQuery("select * from youths where id = :id")
-	public Youth findById(@Bind("id") int id);
+	Youth findById(@Bind("id") int id);
 	
 	@SqlQuery("select * from youths where ssn = :ssn")
-	public Youth findBySSN(@Bind("ssn") String ssn);
+	Youth findBySSN(@Bind("ssn") String ssn);
 	
 	@SqlUpdate("delete from youths where id = :id")
-	public void deleteById(@Bind("id") int id);
+	void deleteById(@Bind("id") int id);
 	
 	@SqlUpdate("update youths set"
 			+ "ssn = :ssn,"
@@ -70,14 +70,14 @@ public interface YouthDAO {
 			+ "certified = :certified,"
 			+ "immediate_medical = :immediate_medical,"
 			+ "where id = :id")
-	public void update(@BindBean Youth Youth);
+	void update(@BindBean Youth Youth);
 	
 	@GetGeneratedKeys // Allows us to return the auto generated id to our client
 	@SqlUpdate("insert into youths (ssn, race, gender, dob, birthcity, birthstate, isadult, certified, immediate_medical)"
 			+ " values (:ssn, :race, :gender, :dob, :birthcity, :birthstate, :isadult, :certified, :immediate_medical)")
-	public int insert(@BindBean Youth Youth);
+	int insert(@BindBean Youth Youth);
 	
-	public void close();
+	void close();
 	
 	
 }

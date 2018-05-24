@@ -4,7 +4,13 @@ public class CourtRelated {
 	private int id;
 	private String category;
 	private String description;
-	
+
+	public CourtRelated(int id, String category, String description) {
+		this.id = id;
+		this.category = category;
+		this.description = description;
+	}
+
 	public CourtRelated() {
 		//Needed for Jackson deserialization
 	}
