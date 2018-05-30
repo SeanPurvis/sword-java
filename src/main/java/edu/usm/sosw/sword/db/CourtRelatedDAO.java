@@ -18,7 +18,7 @@ import java.util.List;
  * Without the <code>RegisterMapper</code> annotation, the SQL query results would not bind properly
  * to the </code>CourtRelated Object.</code>
  *
- * @author Sean T. Purvis4
+ * @author Sean T. Purvis
  * @version 0.0.1
  * @see CourtRelated &
  * @see CourtRelatedMapper
