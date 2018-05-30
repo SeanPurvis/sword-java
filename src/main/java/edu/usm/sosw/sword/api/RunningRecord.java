@@ -12,6 +12,15 @@ public class RunningRecord {
 		//Needed for Jackson deserialization
 	}
 
+	public RunningRecord(String did, int youthid, int id, int noteid, int notepartid, String note) {
+		this.did = did;
+		this.youthid = youthid;
+		this.id = id;
+		this.noteid = noteid;
+		this.notepartid = notepartid;
+		this.note = note;
+	}
+
 	public String getDid() {
 		return did;
 	}
