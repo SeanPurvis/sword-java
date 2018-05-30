@@ -156,8 +156,11 @@ public class MyUser implements Principal {
     public boolean checkPassword(String password_plaintext, String stored_hash) {
     	boolean password_verified = false;
     	
-    	if(null == stored_hash || !stored_hash.startsWith("$2a$"))
-    		throw new java.lang.IllegalArgumentException("Invalid hash provided for comparison");
+		if(null == stored_hash)
+			throw new java.lang.IllegalArgumentException("User does not have a password or does not exist!");
+
+		if(!stored_hash.startsWith("$2a$"))
+			throw new java.lang.IllegalArgumentException("User has an unhashed password!");
     	
     	password_verified = BCrypt.checkpw(password_plaintext, stored_hash);
     	
