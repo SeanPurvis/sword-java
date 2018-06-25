@@ -31,7 +31,7 @@ public class CourtRelatedResource {
     }
 
     @GET
-    @PermitAll
+//  @PermitAll
     public List<CourtRelated> getAll() { return CourtRelatedDAO.getAll(); }
 
     @GET

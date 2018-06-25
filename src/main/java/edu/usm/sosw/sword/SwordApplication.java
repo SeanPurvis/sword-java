@@ -79,7 +79,8 @@ public class SwordApplication extends Application<SwordConfiguration> {
 		final CountyDAO CountyDAO = jdbi.onDemand(CountyDAO.class);
 		final CounselorDAO CounselorDAO = jdbi.onDemand(CounselorDAO.class);
 		final CourtRelatedDAO CourtRelatedDAO = jdbi.onDemand(CourtRelatedDAO.class);
-
+    final RunningRecordDAO RunningRecordDAO = jdbi.onDemand(RunningRecordDAO.class);
+        
 		// Create consumer
 		final JwtConsumer consumer = new JwtConsumerBuilder().setAllowedClockSkewInSeconds(30) 
 				// allow some leeway in
@@ -106,6 +107,7 @@ public class SwordApplication extends Application<SwordConfiguration> {
 		environment.jersey().register(new CountyResource(CountyDAO));
 		environment.jersey().register(new CounselorResource(CounselorDAO));
 		environment.jersey().register(new CourtRelatedResource(CourtRelatedDAO));
+    environment.jersey().register(new RunningRecordResource(RunningRecordDAO));
 
 		enableCorsHeaders(environment);
 	}
