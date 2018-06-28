@@ -11,6 +11,13 @@ public class Custody {
 	public Custody() {
 		//Needed for Jackson deserialization
 	}
+  
+  public Custody(int caseid, int id, Date date_changed, String changed_to ) {
+ 	this.caseid = caseid;
+  	this.id = id;
+  	this.date_changed = date_changed;
+  	this.changed_to  = changed_to;
+  }
 
 	public int getCaseid() {
 		return caseid;
