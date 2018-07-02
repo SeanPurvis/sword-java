@@ -14,6 +14,18 @@ import java.util.List;
 import edu.usm.sosw.sword.api.Custody;
 import edu.usm.sosw.sword.db.CustodyDAO;
 
+/**
+ * The <code>Custody</code> class provides a JSON REST API end point for Custody objects and the <code>custody</code> table.
+ *
+ * Currently, only path parameters are implemented but QueryParameters should be implemented in the future. 
+ * The resource class is exposed by registering it within the SwordApplication run function.
+ *
+ * @author Sean T. Purvis
+ * @version 0.0.1
+ *
+ * @see Custody
+ * @see CustodyDAO
+ */
 @Path("/api/v1/custody")
 @Produces(MediaType.APPLICATION_JSON)
 public class CustodyResource {
