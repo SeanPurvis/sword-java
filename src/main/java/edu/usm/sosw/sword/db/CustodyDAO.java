@@ -8,6 +8,16 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 import java.util.List;
 
 /**
+ *  * This interface exists to provide proper access to the <code>custody</code> table.
+ *  * SQL is written in the <code>SqlUpdate and SqlQuery</code> annotations above every function 
+ *  * and then rewritten and executed by JDBI.
+ *  * 
+ *  * The <code>CustodyDAO</code> interface is used by the <code>CustodyResources</code> class in the <code>resources</code> package.
+ *  * 
+ *  * <code>RegisterMapper</code> annotation allows JDBI to bind the <code>CustodyMapper</code> class to this interface.
+ *  * Without the <code>RegisterMapper</code> annotation, the SQL query results would not bind properly
+ *  * to the </code>Custody Object.</code>
+ *  * 
  * @author Sean T. Purvis
  * @version 0.0.1
  * @see edu.usm.sosw.sword.api.Custody
