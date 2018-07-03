@@ -84,6 +84,9 @@
             </goals>
           </execution>
         </executions>
+        <configuration>
+          <javadocExecutable>/usr/lib/jvm/java-11-openjdk-amd64/bin/javadoc</javadocExecutable>
+        </configuration>
       </plugin>
     </plugins>
   </build>
@@ -117,8 +120,8 @@
   <properties>
     <dropwizard.version>1.2.0</dropwizard.version>
     <mainClass>edu.usm.sosw.sword.SwordApplication</mainClass>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
 </project>
 
