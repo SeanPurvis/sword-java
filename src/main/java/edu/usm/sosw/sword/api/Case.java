@@ -5,7 +5,7 @@ import java.sql.Date;
 /**
  * A Plain Old Java Object implementation of the rows in the cases table.
  * 
- * @author Sean T. Purvis
+ * @author Jonathon Evans
  * @version 0.0.1
  * @see CaseDAO
  * @see CaseResource
@@ -60,6 +60,94 @@ public class Case {
 	
 	public Case() {
 		//Needed for Jackson deserialization
+	}
+	
+	public Case(
+			String did, 
+			int id, 
+			int youthid,
+			String lastname,
+			String firstname,
+			String middlename,
+			String suffix,
+			String alias_monikers,
+			String street,
+			String city,
+			String county,
+			String state,
+			String zip,
+			String home_phone,
+			String length_of_residence_in_county,
+			String location_of_residence,
+			int height_feet,
+			int height_inch,
+			String weight,
+			String eye_color,
+			String hair_color,
+			String scars,
+			String religion,
+			String emp_status,
+			String emp_where,
+			String immediate_needs,
+			String living_arrangements,
+			String school_attended_last,
+			String school_attended_city,
+			String school_attended_state,
+			String school_attended_zip,
+			String current_grade,
+			String special_ed,
+			String school_attendance,
+			String school_placement,
+			int years_school_completed,
+			Date input_date,
+			String input_user,
+			String protection_case,
+			Date modified_date,
+			String cell_phone,
+			String isclosed,
+			String closing_reason,
+			Date closing_date,
+			String disability) {
+		super();
+		this.did = did;
+		this.id = id;
+		this.youthid = youthid;
+		this.lastname = lastname;
+		this.firstname = firstname;
+		this.middlename = middlename;
+		this.suffix = suffix;
+		this.alias_monikers = alias_monikers;
+		this.street = street;
+		this.city = city;
+		this.county = county;
+		this.state = state;
+		this.zip = zip;
+		this.home_phone = home_phone;
+		this.length_of_residence_in_county = length_of_residence_in_county;
+		this.location_of_residence = location_of_residence;
+		this.height_feet = height_feet;
+		this.height_inch = height_inch;
+		this.weight = weight;
+		this.eye_color = eye_color;
+		this.hair_color = hair_color;
+		this.scars = scars;
+		this.religion = religion;
+		this.emp_status = emp_status;
+		this.emp_where = emp_where;
+		this.immediate_needs = immediate_needs;
+		this.living_arrangements = living_arrangements;
+		this.school_attended_last = school_attended_last;
+		this.school_attended_city = school_attended_city;
+		this.school_attended_state = school_attended_state;
+		this.school_attended_zip = school_attended_zip;
+		this.current_grade = current_grade;
+		this.special_ed = special_ed;
+		this.school_attendance = school_attendance;
+		this.school_placement = school_placement;
+		this.years_school_completed = years_school_completed;
+		this.input_date = input_date;
+		this.input_user = input_user;
+		
 	}
 
 	public String getDid() {
