@@ -28,12 +28,71 @@ public class Contact {
 	private String occupation;
 	private String employer;
 	private String work_phone;
-	private String receive_assitance;
+	private String receive_assistance;
 	private String insurance;
 	private String insurance_policy;
 	
 	public Contact() {
 		//Needed for Jackson deserialization
+	}
+	
+	public Contact(
+			int id,
+			int caseid,
+			String relationship,
+			String previous_court,
+			String lastname,
+			String firstname,
+			String middlename,
+			String suffix,
+			String is_guardian,
+			String is_same_address,
+			String street,
+			String city,
+			String state,
+			String zip,
+			String home_phone,
+			String cell_phone,
+			String race,
+			String gender,
+			String ssn,
+			Date dob,
+			String marital_status,
+			String education,
+			String occupation,
+			String employer,
+			String work_phone,
+			String receive_assistance,
+			String insurance,
+			String insurance_policy) {
+		this. id = id;
+		this.caseid = caseid;
+		this.relationship = relationship;
+		this.previous_court = previous_court;
+		this.lastname = lastname;
+		this.firstname = firstname;
+		this.middlename = middlename;
+		this.suffix = suffix;
+		this.is_guardian = is_guardian;
+		this.is_same_address = is_same_address;
+		this.street = street;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+		this.home_phone = home_phone;
+		this.cell_phone = cell_phone;
+		this.race = race;
+		this.gender = gender;
+		this.ssn = ssn;
+		this.dob = dob;
+		this.marital_status = marital_status;
+		this.education = education;
+		this.occupation = occupation;
+		this.employer = employer;
+		this.work_phone = work_phone;
+		this.receive_assistance = receive_assistance;
+		this.insurance = insurance;
+		this.insurance_policy = insurance_policy;
 	}
 
 	public int getId() {
@@ -236,12 +295,12 @@ public class Contact {
 		this.work_phone = work_phone;
 	}
 
-	public String getReceive_assitance() {
-		return receive_assitance;
+	public String getReceive_assistance() {
+		return receive_assistance;
 	}
 
-	public void setReceive_assitance(String receive_assitance) {
-		this.receive_assitance = receive_assitance;
+	public void setReceive_assistance(String receive_assistance) {
+		this.receive_assistance = receive_assistance;
 	}
 
 	public String getInsurance() {
