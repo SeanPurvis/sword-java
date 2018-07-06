@@ -20,7 +20,7 @@ import javax.validation.Valid;
  * @see Action
  * @see ActionResource
  */
-@Path("/api/v1/action")
+@Path("/api/v1/actions")
 @Produces(MediaType.APPLICATION_JSON)
 public class ActionResource {
 	// Our database interface instance
