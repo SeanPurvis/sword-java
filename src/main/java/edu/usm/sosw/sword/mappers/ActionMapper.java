@@ -15,7 +15,7 @@ import edu.usm.sosw.sword.db.ActionDAO;
  * 
  * @author Jonathon Evans
  * @version 0.0.1 
- * @type Counselor Object
+ * @type Action Object
  * @return a new <code>Action</code> object with SQL Query results populated into the data members.
  * @see Action 
  * @see ActionDAO
