@@ -39,11 +39,11 @@ public class ActionResource {
 	public Action getId(@PathParam("id") Integer id) { return ActionDAO.findById(id); }
 	
 	@GET
-	@Path("/case/{id}")
+	@Path("/caseid/{id}")
 	public Action getCaseId(@PathParam("caseid") Integer caseid) { return ActionDAO.findByCaseId(caseid); }
 	
 	@GET
-	@Path("/court/{id}")
+	@Path("/courtid/{id}")
 	public Action getCourtId(@PathParam("courtid") Integer courtid) { return ActionDAO.findByCourtId(courtid); }
 	
 	@POST
