@@ -1,16 +1,11 @@
 package edu.usm.sosw.sword.db;
 
-import java.util.List;
-
 import edu.usm.sosw.sword.api.Counselor;
-import org.skife.jdbi.v2.sqlobject.Bind;
-import org.skife.jdbi.v2.sqlobject.BindBean;
-import org.skife.jdbi.v2.sqlobject.GetGeneratedKeys;
-import org.skife.jdbi.v2.sqlobject.SqlQuery;
-import org.skife.jdbi.v2.sqlobject.SqlUpdate;
+import edu.usm.sosw.sword.mappers.CounselorMapper;
+import org.skife.jdbi.v2.sqlobject.*;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
-import edu.usm.sosw.sword.mappers.CounselorMapper;
+import java.util.List;
 
 /** 
  * This interface exists to provide proper access to the <code>counselors</code> table.

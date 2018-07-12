@@ -7,7 +7,6 @@ import org.skife.jdbi.v2.StatementContext;
 import org.skife.jdbi.v2.tweak.ResultSetMapper;
 
 import edu.usm.sosw.sword.api.Counselor;
-import edu.usm.sosw.sword.api.Counselor;
 
 /**
  * This CounselorMapper maps SQL query results to a Counselor object.

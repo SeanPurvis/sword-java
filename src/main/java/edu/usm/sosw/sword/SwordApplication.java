@@ -15,7 +15,6 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
-import edu.usm.sosw.sword.api.Counselor;
 import edu.usm.sosw.sword.db.*;
 import edu.usm.sosw.sword.resources.*;
 import org.eclipse.jetty.servlets.CrossOriginFilter;
@@ -35,7 +34,6 @@ import io.dropwizard.Application;
 import io.dropwizard.auth.AuthDynamicFeature;
 import io.dropwizard.auth.AuthValueFactoryProvider;
 import io.dropwizard.auth.Authenticator;
-import io.dropwizard.configuration.EnvironmentVariableLookup;
 import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -85,6 +83,7 @@ public class SwordApplication extends Application<SwordConfiguration> {
         final CaseDAO CaseDAO = jdbi.onDemand(CaseDAO.class);
         final ChargeDAO ChargeDAO = jdbi.onDemand(ChargeDAO.class);
         final ContactDAO ContactDAO = jdbi.onDemand(ContactDAO.class);
+        final CaseNoteDAO CaseNoteDAO = jdbi.onDemand(CaseNoteDAO.class);
         
 		// Create consumer
 		final JwtConsumer consumer = new JwtConsumerBuilder().setAllowedClockSkewInSeconds(30) 
@@ -118,6 +117,7 @@ public class SwordApplication extends Application<SwordConfiguration> {
         environment.jersey().register(new CaseResource(CaseDAO));
         environment.jersey().register(new ChargeResource(ChargeDAO));
         environment.jersey().register(new ContactResource(ContactDAO));
+        environment.jersey().register(new CaseNoteResource(CaseNoteDAO));
 		enableCorsHeaders(environment);
 	}
 

@@ -14,6 +14,17 @@ public class CaseNote {
 	public CaseNote() {
 		//Needed for Jackson deserialization
 	}
+	
+	public CaseNote(int id, int youthid, int caseid, int note_id, String note, Date input_date, String input_user) {
+		super();
+		this.id = id;
+		this.youthid = youthid;
+		this.caseid = caseid;
+		this.note_id = note_id;
+		this.note = note;
+		this.input_date = input_date;
+		this.input_user = input_user;
+	}
 
 	public int getId() {
 		return id;
