@@ -27,7 +27,7 @@ public class ContRisk {
 	private int child_RA_age_score;
 	private String violations_elect_monitoring;
 	private int violations_elect_monitoring_score;
-	private String risk_FTA_offense;
+	private String risk_FTA_reoffense;
 	private int risk_FTA_reoffense_count;
 	private int risk_FTA_reoffense_score;
 	private String mitigating_stable_family;
@@ -53,6 +53,107 @@ public class ContRisk {
 	
 	public ContRisk() {
 		//Needed for Jackson deserialization
+	}
+	
+	public ContRisk(
+			int id,
+			int caseid,
+			String fullname,
+			String dob,
+			int age,
+			String gender,
+			String race,
+			String offense,
+			int offense_class_score,
+			String prior_court,
+			int prior_court_count,
+			int prior_court_score,
+			String past_findings,
+			int past_findings_count,
+			int past_findings_score,
+			String current_case_status,
+			int current_case_status_score,
+			String pending_petitions,
+			int pending_petitions_count,
+			int pending_petitions_score,
+			String under_home_confinement,
+			int under_home_confine_score,
+			String child_RA_age,
+			int child_RA_age_score,
+			String violations_elect_monitoring,
+			int violations_elect_monitoring_score,
+			String risk_FTA_reoffense,
+			int risk_FTA_reoffense_count,
+			int risk_FTA_reoffense_score,
+			String mitigating_stable_family,
+			String mitigating_stable_school_work,
+			String mitigating_first_offense_16,
+			String mitigating_reg_warrant,
+			int mitigating_reg_warrant_score,
+			String mitigating_reg_warrant_explain,
+			String mitigating_no_arrest,
+			String mitigating_other,
+			int mitigating_other_score,
+			String mitigating_other_explain,
+			int mitigating_total_score,
+			int RA_total_score,
+			String RA_detention_decision,
+			String override_reason,
+			String override_reason_explain,
+			String RA_date,
+			String RA_time,
+			String RA_counselor,
+			String RA_agency_name,
+			String RA_screener) {
+		this.id = id;
+		this.caseid = caseid;
+		this.fullname = fullname;
+		this.dob = dob;
+		this.age = age;
+		this.gender = gender;
+		this.race = race;
+		this.offense = offense;
+		this.offense_class_score = offense_class_score;
+		this.prior_court = prior_court;
+		this.prior_court_count = prior_court_count;
+		this.prior_court_score = prior_court_score;
+		this.past_findings = past_findings;
+		this.past_findings_count = past_findings_count;
+		this.past_findings_score = past_findings_score;
+		this.current_case_status = current_case_status;
+		this.current_case_status_score = current_case_status_score;
+		this.pending_petitions = pending_petitions;
+		this.pending_petitions_count = pending_petitions_count;
+		this.pending_petitions_score = pending_petitions_score;
+		this.under_home_confinement = under_home_confinement;
+		this.under_home_confine_score = under_home_confine_score;
+		this.child_RA_age = child_RA_age;
+		this.child_RA_age_score = child_RA_age_score;
+		this.violations_elect_monitoring = violations_elect_monitoring;
+		this.violations_elect_monitoring_score = violations_elect_monitoring_score;
+		this.risk_FTA_reoffense = risk_FTA_reoffense;
+		this.risk_FTA_reoffense_count = risk_FTA_reoffense_count;
+		this.risk_FTA_reoffense_score = risk_FTA_reoffense_score;
+		this.mitigating_stable_family = mitigating_stable_family;
+		this.mitigating_stable_school_work = mitigating_stable_school_work;
+		this.mitigating_first_offense_16 = mitigating_first_offense_16;
+		this.mitigating_reg_warrant = mitigating_reg_warrant;
+		this.mitigating_reg_warrant_score = mitigating_reg_warrant_score;
+		this.mitigating_reg_warrant_explain = mitigating_reg_warrant_explain;
+		this.mitigating_no_arrest = mitigating_no_arrest;
+		this.mitigating_other = mitigating_other;
+		this.mitigating_other_score = mitigating_other_score;
+		this.mitigating_other_explain = mitigating_other_explain;
+		this.mitigating_total_score = mitigating_total_score;
+		this.RA_total_score = RA_total_score;
+		this.RA_detention_decision = RA_detention_decision;
+		this.override_reason = override_reason;
+		this.override_reason_explain = override_reason_explain;
+		this.RA_date = RA_date;
+		this.RA_time = RA_time;
+		this.RA_counselor = RA_counselor;
+		this.RA_agency_name = RA_agency_name;
+		this.RA_screener = RA_screener;
 	}
 
 	public int getId() {
@@ -264,11 +365,11 @@ public class ContRisk {
 	}
 
 	public String getRisk_FTA_offense() {
-		return risk_FTA_offense;
+		return risk_FTA_reoffense;
 	}
 
-	public void setRisk_FTA_offense(String risk_FTA_offense) {
-		this.risk_FTA_offense = risk_FTA_offense;
+	public void setRisk_FTA_offense(String risk_FTA_reoffense) {
+		this.risk_FTA_reoffense = risk_FTA_reoffense;
 	}
 
 	public int getRisk_FTA_reoffense_count() {

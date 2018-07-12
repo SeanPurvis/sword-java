@@ -79,11 +79,12 @@ public class SwordApplication extends Application<SwordConfiguration> {
 		final CourtRelatedDAO CourtRelatedDAO = jdbi.onDemand(CourtRelatedDAO.class);
     	final RunningRecordDAO RunningRecordDAO = jdbi.onDemand(RunningRecordDAO.class);
         final CustodyDAO CustodyDAO = jdbi.onDemand(CustodyDAO.class);
-        final ActionDAO ActionDAO = jdbi.onDemand(ActionDAO.class);
-        final CaseDAO CaseDAO = jdbi.onDemand(CaseDAO.class);
-        final ChargeDAO ChargeDAO = jdbi.onDemand(ChargeDAO.class);
-        final ContactDAO ContactDAO = jdbi.onDemand(ContactDAO.class);
         final CaseNoteDAO CaseNoteDAO = jdbi.onDemand(CaseNoteDAO.class);
+        final ContRiskDAO ContRiskDAO = jdbi.onDemand(ContRiskDAO.class);
+        final ContactDAO ContactDAO = jdbi.onDemand(ContactDAO.class);
+        final ChargeDAO ChargeDAO = jdbi.onDemand(ChargeDAO.class);
+        final CaseDAO CaseDAO = jdbi.onDemand(CaseDAO.class);
+        final ActionDAO ActionDAO = jdbi.onDemand(ActionDAO.class);
         
 		// Create consumer
 		final JwtConsumer consumer = new JwtConsumerBuilder().setAllowedClockSkewInSeconds(30) 
@@ -117,6 +118,7 @@ public class SwordApplication extends Application<SwordConfiguration> {
         environment.jersey().register(new CaseResource(CaseDAO));
         environment.jersey().register(new ChargeResource(ChargeDAO));
         environment.jersey().register(new ContactResource(ContactDAO));
+        environment.jersey().register(new ContRiskResource(ContRiskDAO));
         environment.jersey().register(new CaseNoteResource(CaseNoteDAO));
 		enableCorsHeaders(environment);
 	}
