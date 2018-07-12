@@ -151,6 +151,7 @@ public interface ContactDAO {
 			"")
 	void updateByCaseId(@BindBean Contact Contact);
 	
+	@GetGeneratedKeys
 	@SqlUpdate("INSERT INTO `sword-test`.`contacts`\n" + 
 			"(`id`,\n" + 
 			"`caseid`,\n" + 
