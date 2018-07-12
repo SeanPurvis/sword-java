@@ -16,6 +16,27 @@ public class DcCharges {
 	public DcCharges() {
 		//Needed for Jackson deserialization
 	}
+	
+	public DcCharges(
+			int caseid,
+			int id,
+			String statute,
+			String sqlclass,
+			String offense_desc,
+			int book,
+			int page,
+			int line,
+			Date offense_date) {
+		this.caseid = caseid;
+		this.id = id;
+		this.statute = statute;
+		this.sqlclass = sqlclass;
+		this.offense_desc = offense_desc;
+		this.book = book;
+		this.page = page;
+		this.line = line;
+		this.offense_date = offense_date;
+	}
 
 	public int getCaseid() {
 		return caseid;
