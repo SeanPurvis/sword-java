@@ -40,6 +40,72 @@ public class Court {
 	public Court() {
 		//Needed for Jackson deserialization
 	}
+	
+	public Court(
+			int id,
+			int caseid,
+			String attorney_childs,
+			Date attorney_childs_appointed_date,
+			String attorney_fathers,
+			String attorney_mothers,
+			Date case_appointed_date,
+			String court_summary,
+			String court_type,
+			Date formal_petition_filed_date,
+			Date formal_petition_ordered_date,
+			int formal_petition_code,
+			Date gal_appointed_date,
+			String gal_bar_number,
+			Date hearing_date,
+			String hearing_type,
+			Date informal_adjustment_ordered_date,
+			String judge,
+			String mdhs_name,
+			String mdhs_reccomendation,
+			Date motion_entered_date,
+			Date next_hearing_date,
+			String no_show,
+			int number_of_continuances_granted,
+			String plan_concurrent,
+			String plan_permanent,
+			String subpoenaed_names,
+			Date summons_issued_on_child_date,
+			Date summons_served_on_child_date,
+			Date take_no_action_ordered_date,
+			String waived,
+			String witnesses,
+			String zero_to_three_program) {
+		this.id = id;
+		this.caseid = caseid;
+		this.attorney_childs = attorney_childs;
+		this.attorney_childs_appointed_date = attorney_childs_appointed_date;
+		this.court_summary = court_summary;
+		this.court_type = court_type;
+		this.formal_petition_filed_date = formal_petition_filed_date;
+		this.formal_petition_ordered_date = formal_petition_ordered_date;
+		this.formal_petition_code = formal_petition_code;
+		this.gal_appointed_date = gal_appointed_date;
+		this.gal_bar_number = gal_bar_number;
+		this.hearing_date = hearing_date;
+		this.hearing_type = hearing_type;
+		this.informal_adjustment_ordered_date = informal_adjustment_ordered_date;
+		this.judge = judge;
+		this.mdhs_name = mdhs_name;
+		this.mdhs_reccomendation = mdhs_reccomendation;
+		this.motion_entered_date = motion_entered_date;
+		this.next_hearing_date = next_hearing_date;
+		this.no_show = no_show;
+		this.number_of_continuances_granted = number_of_continuances_granted;
+		this.plan_concurrent = plan_concurrent;
+		this.plan_permanent = plan_permanent;
+		this.subpoenaed_names = subpoenaed_names;
+		this.summons_issued_on_child_date = summons_issued_on_child_date;
+		this.summons_served_on_child_date = summons_served_on_child_date;
+		this.take_no_action_ordered_date = take_no_action_ordered_date;
+		this.waived = waived;
+		this.witnesses = witnesses;
+		this.zero_to_three_program = zero_to_three_program;
+	}
 
 	public int getId() {
 		return id;
