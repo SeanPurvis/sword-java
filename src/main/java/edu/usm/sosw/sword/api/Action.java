@@ -10,7 +10,7 @@ public class Action {
 	private String action_type;
 	private String current_risk_level;
 	private String abused;
-	private String adoslescent_offender_program;
+	private String adolescent_offender_program;
 	private String adjudicated;
 	private String certified;
 	private String child_in_need_special_care;
@@ -27,7 +27,7 @@ public class Action {
 	private String drug_court;
 	private String electronic_monitor;
 	private String fined;
-	private String fined_amount;
+	private String fine_amount;
 	private String held_open;
 	private String intensive_supervision;
 	private String legal_custody_change;
@@ -53,16 +53,131 @@ public class Action {
 	private String runaway_returned;
 	private String status_offense;
 	private String suspended_commitment;
-	private String suspended_liscense;
+	private String suspended_license;
 	private String transferred;
 	private Date date_transported;
 	private String truant;
 	private String unsupervised_prob;
-	private String warned_Adjusted_counseled;
+	private String warned_adjusted_counseled;
 	private String action_note;
 	
 	public Action() {
 		//Needed for Jackson deserialization
+	}
+	public Action(
+			int caseid, 
+			int courtid, 
+			int id, 
+			Date date_of_action, 
+			String action_type, 
+			String current_risk_level,
+			String abused,
+			String adolescent_offender_program,
+			String adjudicated,
+			String certified,
+			String child_in_need_special_care,
+			String chins,
+			String community_care,
+			String community_service,
+			String hours,
+			String counselor_supervision,
+			String dys,
+			String delinquent,
+			String dependent,
+			String detention,
+			String dismissed,
+			String drug_court,
+			String electronic_monitor,
+			String fined,
+			String fine_amount,
+			String held_open,
+			String intensive_supervision,
+			String legal_custody_change,
+			String lcc_dhs,
+			String lcc_relative_or_other,
+			String mycc,
+			String neglected,
+			String not_adjudicated,
+			String other,
+			String other2,
+			String physical_custody_change,
+			String pcc_dhs,
+			String pcc_relative_or_other,
+			String probation,
+			int prob_months_amt,
+			String prob_extended,
+			Date supervision_period_from,
+			Date supervision_period_to,
+			String restitution,
+			String restitution_amount,
+			String returned_home,
+			String runaway,
+			String runaway_returned,
+			String status_offense,
+			String suspended_commitment,
+			String suspended_license,
+			String transferred,
+			Date date_transported,
+			String truant,
+			String unsupervised_prob,
+			String warned_adjusted_counseled,
+			String action_note) {
+		super();
+		this.caseid = caseid;
+		this.courtid = courtid;
+		this.id = id;
+		this.date_of_action = date_of_action;
+		this.action_type = action_type;
+		this.current_risk_level = current_risk_level;
+		this.abused = abused;
+		this.adolescent_offender_program = adolescent_offender_program;
+		this.adjudicated = adjudicated;
+		this.certified = certified;
+		this.child_in_need_special_care = child_in_need_special_care;
+		this.chins = chins;
+		this.community_care = community_care;
+		this.community_service = community_service;
+		this.hours = hours;
+		this.counselor_supervision = counselor_supervision;
+		this.dys = dys;
+		this.delinquent = delinquent;
+		this.dependent = dependent;
+		this.detention = detention;
+		this.dismissed = dismissed;
+		this.drug_court = drug_court;
+		this.electronic_monitor = electronic_monitor;
+		this.fined = fined;
+		this.fine_amount = fine_amount;
+		this.held_open = held_open;
+		this.intensive_supervision = intensive_supervision;
+		this.legal_custody_change = legal_custody_change;
+		this.lcc_dhs = lcc_dhs;
+		this.lcc_relative_or_other = lcc_relative_or_other;
+		this.mycc = mycc;
+		this.neglected = neglected;
+		this.not_adjudicated = not_adjudicated;
+		this.other = other;
+		this.other2 = other2;
+		this.physical_custody_change = physical_custody_change;
+		this.pcc_dhs = pcc_dhs;
+		this.pcc_relative_or_other = pcc_relative_or_other;
+		this.probation = probation;
+		this.prob_months_amt = prob_months_amt;
+		this.prob_extended = prob_extended;
+		this.supervision_period_from = supervision_period_from;
+		this.supervision_period_to = supervision_period_to;
+		this.restitution = restitution;
+		this.restitution_amount = restitution_amount;
+		this.returned_home = returned_home;
+		this.status_offense = status_offense;
+		this.suspended_commitment = suspended_commitment;
+		this.suspended_license = suspended_license;
+		this.transferred = transferred;
+		this.date_transported = date_transported;
+		this.truant = truant;
+		this.unsupervised_prob = unsupervised_prob;
+		this.warned_adjusted_counseled = warned_adjusted_counseled;
+		this.action_note = action_note;
 	}
 
 	public int getCaseid() {
@@ -121,12 +236,12 @@ public class Action {
 		this.abused = abused;
 	}
 
-	public String getAdoslescent_offender_program() {
-		return adoslescent_offender_program;
+	public String getAdolescent_offender_program() {
+		return adolescent_offender_program;
 	}
 
-	public void setAdoslescent_offender_program(String adoslescent_offender_program) {
-		this.adoslescent_offender_program = adoslescent_offender_program;
+	public void setAdolescent_offender_program(String adoslescent_offender_program) {
+		this.adolescent_offender_program = adoslescent_offender_program;
 	}
 
 	public String getAdjudicated() {
@@ -257,12 +372,12 @@ public class Action {
 		this.fined = fined;
 	}
 
-	public String getFined_amount() {
-		return fined_amount;
+	public String getFine_amount() {
+		return fine_amount;
 	}
 
-	public void setFined_amount(String fined_amount) {
-		this.fined_amount = fined_amount;
+	public void setFine_amount(String fine_amount) {
+		this.fine_amount = fine_amount;
 	}
 
 	public String getHeld_open() {
@@ -465,12 +580,12 @@ public class Action {
 		this.suspended_commitment = suspended_commitment;
 	}
 
-	public String getSuspended_liscense() {
-		return suspended_liscense;
+	public String getSuspended_license() {
+		return suspended_license;
 	}
 
-	public void setSuspended_liscense(String suspended_liscense) {
-		this.suspended_liscense = suspended_liscense;
+	public void setSuspended_liscense(String suspended_license) {
+		this.suspended_license = suspended_license;
 	}
 
 	public String getTransferred() {
@@ -505,12 +620,12 @@ public class Action {
 		this.unsupervised_prob = unsupervised_prob;
 	}
 
-	public String getWarned_Adjusted_counseled() {
-		return warned_Adjusted_counseled;
+	public String getWarned_adjusted_counseled() {
+		return warned_adjusted_counseled;
 	}
 
-	public void setWarned_Adjusted_counseled(String warned_Adjusted_counseled) {
-		this.warned_Adjusted_counseled = warned_Adjusted_counseled;
+	public void setWarned_adjusted_counseled(String warned_adjusted_counseled) {
+		this.warned_adjusted_counseled = warned_adjusted_counseled;
 	}
 
 	public String getAction_note() {

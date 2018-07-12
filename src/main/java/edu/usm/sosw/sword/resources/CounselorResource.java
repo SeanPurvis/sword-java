@@ -24,7 +24,7 @@ import javax.validation.Valid;
 @Path("/api/v1/counselor")
 @Produces(MediaType.APPLICATION_JSON)
 public class CounselorResource {
-    // Our database inteface instance
+    // Our database interface instance
     CounselorDAO CounselorDAO;
 
     public CounselorResource(CounselorDAO CounselorDAO) {

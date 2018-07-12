@@ -10,13 +10,38 @@ public class Charge {
 	private String sqlclass; //needs to be called class in the table
 	private int risk_assessment_value;
 	private String offense_desc;
-	private String date_offense_occured;
+	private Date date_offense_occured;
 	private int docket_year;
 	private int docket_intake;
 	private Date input_date;
 	
 	public Charge() {
 		//Needed for Jackson deserialization
+	}
+	
+	public Charge(
+			int caseid,
+			int id,
+			String docket_number,
+			String statute,
+			String sqlclass,
+			int risk_assessment_value,
+			String offense_desc,
+			Date date_offense_occured,
+			int docket_year,
+			int docket_intake,
+			Date input_date) {
+		this.caseid = caseid;
+		this.id = id;
+		this.docket_number = docket_number;
+		this.statute = statute;
+		this.sqlclass = sqlclass;
+		this.risk_assessment_value = risk_assessment_value;
+		this.offense_desc = offense_desc;
+		this.date_offense_occured = date_offense_occured;
+		this.docket_year = docket_year;
+		this.docket_intake = docket_intake;
+		this.input_date = input_date;
 	}
 
 	public int getCaseid() {
@@ -75,11 +100,11 @@ public class Charge {
 		this.offense_desc = offense_desc;
 	}
 
-	public String getDate_offense_occured() {
+	public Date getDate_offense_occured() {
 		return date_offense_occured;
 	}
 
-	public void setDate_offense_occured(String date_offense_occured) {
+	public void setDate_offense_occured(Date date_offense_occured) {
 		this.date_offense_occured = date_offense_occured;
 	}
 
