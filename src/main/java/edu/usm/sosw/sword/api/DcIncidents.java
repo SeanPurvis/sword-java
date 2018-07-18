@@ -28,6 +28,51 @@ public class DcIncidents {
 	public DcIncidents() {
 		//Needed for Jackson deserialization
 	}
+	
+	public DcIncidents(
+			int caseid,
+			int id,
+			Date doa,
+			String doa_time,
+			String cell,
+			String booking_officer,
+			String arresting_officer,
+			String arresting_agency,
+			String attorney,
+			String docket,
+			String hold_for,
+			String hold_released_by,
+			Date hold_released_date,
+			String intake_notes,
+			Date releasing_date,
+			String releasing_time,
+			String releasing_officer,
+			String releasing_how,
+			String releasing_authority,
+			String releasing_to,
+			String ordering_county) {
+		this.caseid = caseid;
+		this.id = id;
+		this.doa = doa;
+		this.doa_time = doa_time;
+		this.cell = cell;
+		this.booking_officer = booking_officer;
+		this.arresting_officer = arresting_officer;
+		this.arresting_agency = arresting_agency;
+		this.attorney = attorney;
+		this.docket = docket;
+		this.hold_for = hold_for;
+		this.hold_released_by = hold_released_by;
+		this.hold_released_date = hold_released_date;
+		this.intake_notes = intake_notes;
+		this.releasing_date = releasing_date;
+		this.releasing_time = releasing_time;
+		this.releasing_officer = releasing_officer;
+		this.releasing_how = releasing_how;
+		this.releasing_authority = releasing_authority;
+		this.releasing_to = releasing_to;
+		this.ordering_county = ordering_county;
+	}
 
 	public int getCaseid() {
 		return caseid;
