@@ -13,6 +13,19 @@ public class Documents {
 	public Documents() {
 		//Needed for Jackson deserialization
 	}
+	
+	public Documents(
+			int chargeid,
+			int id,
+			String doc_name,
+			Blob text,
+			Date order_date) {
+		this.chargeid = chargeid;
+		this.id = id;
+		this.doc_name = doc_name;
+		this.text = text;
+		this.order_date = order_date;
+	}
 
 	public int getChargeid() {
 		return chargeid;

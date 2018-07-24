@@ -13,6 +13,19 @@ public class DocScanned {
 	public DocScanned() {
 		//Needed for Jackson deserialization
 	}
+	
+	public DocScanned(
+			int caseid,
+			int id,
+			String doc_name,
+			Blob text,
+			Date order_date) {
+		this.caseid = caseid;
+		this.id = id;
+		this.doc_name = doc_name;
+		this.text = text;
+		this.order_date = order_date;
+	}
 
 	public int getCaseid() {
 		return caseid;

@@ -69,10 +69,10 @@ public interface DcIncidentsDAO {
 	@SqlQuery("select * from DcIncidents where caseid = :caseid")
 	DcIncidents findByCaseId(@Bind("caseid") Integer caseid);
 	
-	@SqlUpdate("delete from contacts where id = :id")
+	@SqlUpdate("delete from DcIncidents where id = :id")
 	void deleteById(@Bind("id") Integer id);
 	
-	@SqlUpdate("delete from contacts where caseid = :caseid")
+	@SqlUpdate("delete from DcIncidents where caseid = :caseid")
 	void deleteByCaseId(@Bind("caseid") Integer caseid);
 	
 	@SqlUpdate("UPDATE `sword-test`.`dc_incidents`\n" + 
