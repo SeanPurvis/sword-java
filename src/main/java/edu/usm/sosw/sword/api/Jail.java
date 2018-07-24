@@ -9,6 +9,17 @@ public class Jail {
 	public Jail() {
 		//Needed for Jackson deserialization
 	}
+	
+	public Jail(
+			int id,
+			String name,
+			String unit,
+			String cells) {
+		this.id = id;
+		this.name = name;
+		this.unit = unit;
+		this.cells = cells;
+	}
 
 	public int getId() {
 		return id;

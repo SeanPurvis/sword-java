@@ -60,19 +60,19 @@ public interface DcIncidentsDAO {
 			"")
 	void createDcIncidentsTable();
 	
-	@SqlQuery("select * from DcIncidents")
+	@SqlQuery("select * from dc_incidents")
 	List<DcIncidents> getAll();
 	
-	@SqlQuery("select * from DcIncidents where id = :id")
+	@SqlQuery("select * from dc_incidents where id = :id")
 	DcIncidents findById(@Bind("id") Integer id);
 	
-	@SqlQuery("select * from DcIncidents where caseid = :caseid")
+	@SqlQuery("select * from dc_incidents where caseid = :caseid")
 	DcIncidents findByCaseId(@Bind("caseid") Integer caseid);
 	
-	@SqlUpdate("delete from DcIncidents where id = :id")
+	@SqlUpdate("delete from dc_incidents where id = :id")
 	void deleteById(@Bind("id") Integer id);
 	
-	@SqlUpdate("delete from DcIncidents where caseid = :caseid")
+	@SqlUpdate("delete from dc_incidents where caseid = :caseid")
 	void deleteByCaseId(@Bind("caseid") Integer caseid);
 	
 	@SqlUpdate("UPDATE `sword-test`.`dc_incidents`\n" + 
