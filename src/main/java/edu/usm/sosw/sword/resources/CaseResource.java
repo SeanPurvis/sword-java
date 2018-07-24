@@ -72,9 +72,7 @@ public class CaseResource {
 	
 	@DELETE
 	@Path("/youth/{id}")
-	public void deleteByYouthId(@PathParam("youthid") Integer youthid) { CaseDAO.deleteByYouthId(youthid); }
-	
-	
+	public void deleteByYouthId(@PathParam("youthid") Integer youthid) { CaseDAO.deleteByYouthId(youthid); }	
 }
 
 

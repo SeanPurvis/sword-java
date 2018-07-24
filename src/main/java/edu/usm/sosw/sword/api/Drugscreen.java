@@ -16,6 +16,27 @@ public class Drugscreen {
 	public Drugscreen() {
 		//Needed for Jackson deserialization
 	}
+	
+	public Drugscreen(
+			int youthid,
+			int id,
+			Date testdate,
+			String benzodiazepine,
+			String crystal_methamphetamine,
+			String amphetamines,
+			String thc,
+			String coke,
+			String opiates) {
+		this.youthid = youthid;
+		this.id = id;
+		this.testdate = testdate;
+		this.benzodiazepine = benzodiazepine;
+		this.crystal_methamphetamine = crystal_methamphetamine;
+		this.amphetamines = amphetamines;
+		this.thc = thc;
+		this.coke = coke;
+		this.opiates = opiates;
+	}
 
 	public int getYouthid() {
 		return youthid;
