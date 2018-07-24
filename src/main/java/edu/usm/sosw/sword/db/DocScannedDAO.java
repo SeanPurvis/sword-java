@@ -44,19 +44,19 @@ public interface DocScannedDAO {
 			"")
 	void createDocScannedTable();
 	
-	@SqlQuery("select * from DocScanned")
+	@SqlQuery("select * from docscanned")
 	List<DocScanned> getAll();
 	
-	@SqlQuery("select * from DocScanned where caseid = :caseid")
+	@SqlQuery("select * from docscanned where caseid = :caseid")
 	DocScanned findByCaseId(@Bind("caseid") Integer caseid);
 	
-	@SqlQuery("select * from DocScanned where id = :id")
+	@SqlQuery("select * from docscanned where id = :id")
 	DocScanned findById(@Bind("id") Integer id);
 	
-	@SqlUpdate("delete from DocScanned where caseid = :caseid")
+	@SqlUpdate("delete from docscanned where caseid = :caseid")
 	void deleteByCaseId(@Bind("caseid") Integer caseid);
 	
-	@SqlUpdate("delete form DocScanned where id = :id")
+	@SqlUpdate("delete form docscanned where id = :id")
 	void deleteById(@Bind("id") Integer id);
 	
 	@SqlUpdate("UPDATE `sword-test`.`docscanned`\n" + 

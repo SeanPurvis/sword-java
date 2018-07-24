@@ -91,6 +91,7 @@ public class SwordApplication extends Application<SwordConfiguration> {
         final DocScannedDAO DocScannedDAO = jdbi.onDemand(DocScannedDAO.class);
         final DocumentsDAO DocumentsDAO = jdbi.onDemand(DocumentsDAO.class);
         final DrugscreenDAO DrugscreenDAO = jdbi.onDemand(DrugscreenDAO.class);
+        final JailDAO JailDAO = jdbi.onDemand(JailDAO.class);
         
 		// Create consumer
 		final JwtConsumer consumer = new JwtConsumerBuilder().setAllowedClockSkewInSeconds(30) 
@@ -132,6 +133,7 @@ public class SwordApplication extends Application<SwordConfiguration> {
         environment.jersey().register(new DocScannedResource(DocScannedDAO));
         environment.jersey().register(new DocumentsResource(DocumentsDAO));
         environment.jersey().register(new DrugscreenResource(DrugscreenDAO));
+        environment.jersey().register(new JailResource(JailDAO));
 		enableCorsHeaders(environment);
 	}
 
