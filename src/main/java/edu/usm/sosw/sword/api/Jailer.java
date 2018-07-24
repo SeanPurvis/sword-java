@@ -9,6 +9,17 @@ public class Jailer {
 	public Jailer() {
 		//Needed for Jackson deserialization
 	}
+	
+	public Jailer(
+			int id,
+			String code,
+			String name,
+			int status) {
+		this.id = id;
+		this.code = code;
+		this.name = name;
+		this.status = status;
+	}
 
 	public int getId() {
 		return id;
