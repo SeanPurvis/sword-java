@@ -17,6 +17,33 @@ public class Medical {
 	public Medical() {
 		//Needed for Jackson deserialization
 	}
+	
+	public Medical(
+			int caseid,
+			int id,
+			String immediate_medical_needs,
+			String immediate_phych_needs,
+			String current_medications,
+			String medical_insurance,
+			String agency1,
+			String benefits1,
+			String agency2,
+			String benefits2,
+			String agency3,
+			String benefits3) {
+		this.caseid = caseid;
+		this.id = id;
+		this.immediate_medical_needs = immediate_medical_needs;
+		this.immediate_phych_needs = immediate_phych_needs;
+		this.current_medications = current_medications;
+		this.medical_insurance = medical_insurance;
+		this.agency1 = agency1;
+		this.benefits1 = benefits1;
+		this.agency2 = agency2;
+		this.benefits2 = benefits2;
+		this.agency3 = agency3;
+		this.benefits3 = benefits3;
+	}
 
 	public int getCaseid() {
 		return caseid;
