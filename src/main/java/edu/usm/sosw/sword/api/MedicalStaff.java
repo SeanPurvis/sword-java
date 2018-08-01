@@ -8,6 +8,15 @@ public class MedicalStaff {
 	public MedicalStaff() {
 		//Needed for Jackson deserialization
 	}
+	
+	public MedicalStaff(
+			int med_emp_id,
+			String name,
+			int visitation_fee) {
+		this.med_emp_id = med_emp_id;
+		this.name = name;
+		this.visitation_fee = visitation_fee;
+	}
 
 	public int getMed_emp_id() {
 		return med_emp_id;
