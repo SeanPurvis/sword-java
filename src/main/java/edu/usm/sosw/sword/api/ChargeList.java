@@ -14,6 +14,21 @@ public class ChargeList {
 	public ChargeList() {
 		//Needed for Jackson deserialization
 	}
+	
+	public ChargeList(int id, String category, String description, String statute, String type,
+			int risk_assessment_value, String petition_name, String petition_child_declaration,
+			String petition_crime_desc_template) {
+		super();
+		this.id = id;
+		this.category = category;
+		this.description = description;
+		this.statute = statute;
+		this.type = type;
+		this.risk_assessment_value = risk_assessment_value;
+		this.petition_name = petition_name;
+		this.petition_child_declaration = petition_child_declaration;
+		this.petition_crime_desc_template = petition_crime_desc_template;
+	}
 
 	public int getId() {
 		return id;

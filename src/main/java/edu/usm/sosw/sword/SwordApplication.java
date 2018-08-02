@@ -85,6 +85,11 @@ public class SwordApplication extends Application<SwordConfiguration> {
         final ChargeDAO ChargeDAO = jdbi.onDemand(ChargeDAO.class);
         final CaseDAO CaseDAO = jdbi.onDemand(CaseDAO.class);
         final ActionDAO ActionDAO = jdbi.onDemand(ActionDAO.class);
+        final CaseDAO CaseDAO = jdbi.onDemand(CaseDAO.class);
+        final ChargeDAO ChargeDAO = jdbi.onDemand(ChargeDAO.class);
+        final ContactDAO ContactDAO = jdbi.onDemand(ContactDAO.class);
+        final CaseNoteDAO CaseNoteDAO = jdbi.onDemand(CaseNoteDAO.class);
+        final ChargeListDAO ChargeListDAO = jdbi.onDemand(ChargeListDAO.class);
         final CourtDAO CourtDAO = jdbi.onDemand(CourtDAO.class);
         final DcChargesDAO DcChargesDAO = jdbi.onDemand(DcChargesDAO.class);
         final DcIncidentsDAO DcIncidentsDAO = jdbi.onDemand(DcIncidentsDAO.class);
@@ -131,6 +136,7 @@ public class SwordApplication extends Application<SwordConfiguration> {
         environment.jersey().register(new ContactResource(ContactDAO));
         environment.jersey().register(new ContRiskResource(ContRiskDAO));
         environment.jersey().register(new CaseNoteResource(CaseNoteDAO));
+        environment.jersey().register(new ChargeListResource(ChargeListDAO));
         environment.jersey().register(new CourtResource(CourtDAO));
         environment.jersey().register(new DcChargesResource(DcChargesDAO));
         environment.jersey().register(new DcIncidentsResource(DcIncidentsDAO));
