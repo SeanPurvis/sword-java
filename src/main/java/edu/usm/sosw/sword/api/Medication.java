@@ -8,6 +8,15 @@ public class Medication {
 	public Medication() {
 		// Needed by Jackson deserialization
 	}
+	
+	public Medication(
+			int med_id,
+			String medication,
+			String floor_stock) {
+		this.med_id = med_id;
+		this.medication = medication;
+		this.floor_stock = floor_stock;
+	}
 
 	public int getMed_id() {
 		return med_id;
