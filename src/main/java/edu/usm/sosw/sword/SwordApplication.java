@@ -84,6 +84,7 @@ public class SwordApplication extends Application<SwordConfiguration> {
         final ChargeDAO ChargeDAO = jdbi.onDemand(ChargeDAO.class);
         final ContactDAO ContactDAO = jdbi.onDemand(ContactDAO.class);
         final CaseNoteDAO CaseNoteDAO = jdbi.onDemand(CaseNoteDAO.class);
+        final ChargeListDAO ChargeListDAO = jdbi.onDemand(ChargeListDAO.class);
         
 		// Create consumer
 		final JwtConsumer consumer = new JwtConsumerBuilder().setAllowedClockSkewInSeconds(30) 
@@ -118,6 +119,7 @@ public class SwordApplication extends Application<SwordConfiguration> {
         environment.jersey().register(new ChargeResource(ChargeDAO));
         environment.jersey().register(new ContactResource(ContactDAO));
         environment.jersey().register(new CaseNoteResource(CaseNoteDAO));
+        environment.jersey().register(new ChargeListResource(ChargeListDAO));
 		enableCorsHeaders(environment);
 	}
 
