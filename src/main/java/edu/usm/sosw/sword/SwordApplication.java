@@ -79,11 +79,7 @@ public class SwordApplication extends Application<SwordConfiguration> {
 		final CourtRelatedDAO CourtRelatedDAO = jdbi.onDemand(CourtRelatedDAO.class);
     	final RunningRecordDAO RunningRecordDAO = jdbi.onDemand(RunningRecordDAO.class);
         final CustodyDAO CustodyDAO = jdbi.onDemand(CustodyDAO.class);
-        final CaseNoteDAO CaseNoteDAO = jdbi.onDemand(CaseNoteDAO.class);
         final ContRiskDAO ContRiskDAO = jdbi.onDemand(ContRiskDAO.class);
-        final ContactDAO ContactDAO = jdbi.onDemand(ContactDAO.class);
-        final ChargeDAO ChargeDAO = jdbi.onDemand(ChargeDAO.class);
-        final CaseDAO CaseDAO = jdbi.onDemand(CaseDAO.class);
         final ActionDAO ActionDAO = jdbi.onDemand(ActionDAO.class);
         final CaseDAO CaseDAO = jdbi.onDemand(CaseDAO.class);
         final ChargeDAO ChargeDAO = jdbi.onDemand(ChargeDAO.class);
