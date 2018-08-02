@@ -19,6 +19,33 @@ public class MedicalVisit {
 	public MedicalVisit() {
 		//Needed for Jackson deserialization
 	}
+	
+	public MedicalVisit(
+			int medical_visit_id,
+			int youthid,
+			Date visit_date,
+			String medical_staff,
+			String complaint,
+			String diagnosis,
+			String outside_treatment,
+			double outside_treatment_fee,
+			String secondary_outside_treatment,
+			double secondary_outside_treatment_fee,
+			double transport_cost,
+			String ordering_county) {
+		this.medical_visit_id = medical_visit_id;
+		this.youthid = youthid;
+		this.visit_date = visit_date;
+		this.medical_staff = medical_staff;
+		this.complaint = complaint;
+		this.diagnosis = diagnosis;
+		this.outside_treatment = outside_treatment;
+		this.outside_treatment_fee = outside_treatment_fee;
+		this.secondary_outside_treatment = secondary_outside_treatment;
+		this.secondary_outside_treatment_fee = secondary_outside_treatment_fee;
+		this.transport_cost = transport_cost;
+		this.ordering_county = ordering_county;
+	}
 
 	public int getMedical_visit_id() {
 		return medical_visit_id;
