@@ -148,6 +148,8 @@ public class SwordApplication extends Application<SwordConfiguration> {
         environment.jersey().register(new MedicalStaffResource(MedicalStaffDAO));
         environment.jersey().register(new MedicalVisitResource(MedicalVisitDAO));
         environment.jersey().register(new MedicationResource(MedicationDAO));
+        environment.jersey().register(new MedicationsResource(MedicationsDAO));
+        environment.jersey().register(new ReferringAgencyResource(ReferringAgencyDAO));
 		enableCorsHeaders(environment);
 	}
 
