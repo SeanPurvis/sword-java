@@ -9,6 +9,13 @@ public class ReferringAgency {
 		//Needed for Jackson deserialization
 	}
 
+	public ReferringAgency(int id, String category, String agency_name) {
+		super();
+		this.id = id;
+		this.category = category;
+		this.agency_name = agency_name;
+	}
+
 	public int getId() {
 		return id;
 	}
