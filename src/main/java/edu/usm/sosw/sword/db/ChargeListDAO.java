@@ -36,7 +36,7 @@ import edu.usm.sosw.sword.resources.ChargeResource;
 @RegisterMapper(ChargeListMapper.class)
 public interface ChargeListDAO {
 	
-	@SqlUpdate("CREATE TABLE `static_charge_list` (\n" + 
+	@SqlUpdate("CREATE TABLE IF NOT EXISTS `static_charge_list` (\n" + 
 			"  `id` int(11) NOT NULL AUTO_INCREMENT,\n" + 
 			"  `category` varchar(45) NOT NULL DEFAULT '',\n" + 
 			"  `description` varchar(100) NOT NULL DEFAULT '',\n" + 

@@ -19,6 +19,32 @@ public class Medications {
 	public Medications() {
 		//Needed for Jackson deserialization
 	}
+	
+	public Medications(
+			int id,
+			int youthid,
+			Date request_date,
+			String medication,
+			String frequency,
+			int quantity,
+			String dosage,
+			BigDecimal cost,
+			Date start_date,
+			Date end_date,
+			String ordering_county) {
+		super();
+		this.id = id;
+		this.youthid = youthid;
+		this.request_date = request_date;
+		this.medication = medication;
+		this.frequency = frequency;
+		this.quantity = quantity;
+		this.dosage = dosage;
+		this.cost = cost;
+		this.start_date = start_date;
+		this.end_date = end_date;
+		this.ordering_county = ordering_county;
+	}
 
 	public int getId() {
 		return id;
