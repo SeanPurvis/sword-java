@@ -10,6 +10,19 @@ public class MergedYouth {
 	public MergedYouth() {
 		//Needed for Jackson deserialization
 	}
+	
+	public MergedYouth(
+			int id,
+			String edited_table,
+			int table_id,
+			int old_youthid,
+			int new_youthid) {
+		this.id = id;
+		this.edited_table = edited_table;
+		this.table_id = table_id;
+		this.old_youthid = old_youthid;
+		this.new_youthid = new_youthid;
+	}
 
 	public int getId() {
 		return id;

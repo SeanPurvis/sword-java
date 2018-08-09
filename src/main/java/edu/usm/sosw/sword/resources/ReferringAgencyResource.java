@@ -26,7 +26,7 @@ import edu.usm.sosw.sword.db.ReferringAgencyDAO;
  * @see ReferringAgency 
  * @see ReferringAgencyDAO
  */
-@Path("/api/v1/youth")
+@Path("/api/v1/referring_agencies")
 @Produces(MediaType.APPLICATION_JSON)
 public class ReferringAgencyResource {
 	
