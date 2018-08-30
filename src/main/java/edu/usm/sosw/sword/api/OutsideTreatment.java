@@ -7,6 +7,11 @@ public class OutsideTreatment {
 	public OutsideTreatment() {
 		// Needed for Jackson deserialization
 	}
+	
+	public OutsideTreatment(
+			int outside_treatment_id,
+			String outside_source) {
+	}
 
 	public int getOutside_treatment_id() {
 		return outside_treatment_id;
