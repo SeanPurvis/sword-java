@@ -16,6 +16,7 @@ import edu.usm.sosw.sword.api.Custody;
  * @type Custody Object
  * @return a new <code>Custody</code> object with SQL Query results populated into the data members.
  * @see Custody
+ * @see CustodyDAO
  */
 public class CustodyMapper implements ResultSetMapper<Custody> {
     public Custody map(int index, ResultSet r, StatementContext ctx) throws SQLException {

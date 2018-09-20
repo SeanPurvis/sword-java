@@ -14,7 +14,8 @@ import java.sql.SQLException;
  * @version 0.0.1
  * @type RunningRecord Object
  * @return a new <code>RunningRecord</code> object with SQL query results populated into the data members.
- * @see edu.usm.sosw.sword.api.RunningRecord
+ * @see RunningRecord
+ * @see RunningRecordDAO
  */
 public class RunningRecordMapper implements ResultSetMapper<RunningRecord> {
     public RunningRecord map(int index, ResultSet r, StatementContext ctx) throws SQLException {

@@ -22,6 +22,7 @@ import java.util.List;
  * @version 0.0.1 
  * @see MyUser 
  * @see UserMapper
+ * @see UserResource
  */
 @RegisterMapper(UserMapper.class)
 public interface UserDAO {

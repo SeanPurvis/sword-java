@@ -18,7 +18,6 @@ import edu.usm.sosw.sword.api.Charge;
  * @see Charge 
  * @see ChargeDAO
  */
-
 public class ChargeMapper implements ResultSetMapper<Charge>{
 	public Charge map(int index, ResultSet r, StatementContext ctx) throws SQLException {
 		return new Charge(

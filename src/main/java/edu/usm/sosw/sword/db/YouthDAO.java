@@ -22,6 +22,7 @@ import java.util.List;
  * @version 0.0.1 
  * @see Youth 
  * @see YouthMapper
+ * @see YouthResource
  */
 @RegisterMapper(YouthMapper.class)
 public interface YouthDAO {

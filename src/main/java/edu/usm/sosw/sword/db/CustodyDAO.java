@@ -20,8 +20,9 @@ import java.util.List;
  *  * 
  * @author Sean T. Purvis
  * @version 0.0.1
- * @see edu.usm.sosw.sword.api.Custody
- * @see edu.usm.sosw.sword.api.CustodyMapper
+ * @see Custody
+ * @see CustodyMapper
+ * @see CustodyResource
  */
 @RegisterMapper(CustodyMapper.class)
 public interface CustodyDAO {

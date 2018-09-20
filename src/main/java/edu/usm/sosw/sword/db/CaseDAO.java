@@ -18,7 +18,7 @@ import edu.usm.sosw.sword.resources.CaseResource;
  * SQL is written in the <code>SqlUpdate and SqlQuery</code> annotations above every function 
  * and then rewritten and executed by JDBI.
  * 
- * The <code>CaseDAO</code> interface is used by the <code>ActionResources</code> class in the <code>resources</code> package.
+ * The <code>CaseDAO</code> interface is used by the <code>CaseResources</code> class in the <code>resources</code> package.
  * 
  * <code>RegisterMapper</code> annotation allows JDBI to bind the <code>CaseMapper</code> class to this interface.
  * Without the <code>RegisterMapper</code> annotation, the SQL query results would not bind properly

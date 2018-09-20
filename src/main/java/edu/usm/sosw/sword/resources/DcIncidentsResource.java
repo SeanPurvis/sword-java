@@ -9,7 +9,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 /**
- * The <code>DcIncidents</code> class provides a JSON REST API end point for DcIncidents objects and the <code>DcIncidentss</code> table.
+ * The <code>DcIncidents</code> class provides a JSON REST API end point for DcIncidents objects and the <code>DcIncidents</code> table.
  *
  * Currently, only path parameters are implemented but QueryParameters should be implemented in the future.
  * The resource class is exposed by registering it within the SwordApplication run function.

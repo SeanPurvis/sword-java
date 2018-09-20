@@ -14,7 +14,8 @@ import java.sql.SQLException;
  * @version 0.0.1
  * @type CourtRelated Object
  * @return a new <code>CourtRelated</code> object with SQL Query results populated into the data members.
- * @see edu.usm.sosw.sword.api.CourtRelated
+ * @see CourtRelated
+ * @see CourtRelatedDAO
  */
 public class CourtRelatedMapper implements ResultSetMapper<CourtRelated> {
     public CourtRelated map(int index, ResultSet r, StatementContext ctx) throws SQLException {

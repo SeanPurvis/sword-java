@@ -18,7 +18,7 @@ import edu.usm.sosw.sword.resources.ContRiskResource;
  * SQL is written in the <code>SqlUpdate and SqlQuery</code> annotations above every function 
  * and then rewritten and executed by JDBI.
  * 
- * The <code>ContRiskDAO</code> interface is used by the <code>ActionResources</code> class in the <code>resources</code> package.
+ * The <code>ContRiskDAO</code> interface is used by the <code>ContRiskResources</code> class in the <code>resources</code> package.
  * 
  * <code>RegisterMapper</code> annotation allows JDBI to bind the <code>ContRiskMapper</code> class to this interface.
  * Without the <code>RegisterMapper</code> annotation, the SQL query results would not bind properly

@@ -9,7 +9,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 /**
- * The <code>DcCharges</code> class provides a JSON REST API end point for DcCharges objects and the <code>DcChargess</code> table.
+ * The <code>DcCharges</code> class provides a JSON REST API end point for DcCharges objects and the <code>DcCharges</code> table.
  *
  * Currently, only path parameters are implemented but QueryParameters should be implemented in the future.
  * The resource class is exposed by registering it within the SwordApplication run function.

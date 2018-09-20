@@ -6,9 +6,23 @@ import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
+
 import edu.usm.sosw.sword.db.CaseNoteDAO;
 import edu.usm.sosw.sword.api.CaseNote;
 
+/**
+ * The <code>CaseNote</code> class provides a JSON REST API end point for CaseNote objects and the <code>casenotes</code> table.
+ *
+ * Currently, only path parameters are implemented but QueryParameters should be implemented in the future.
+ * The resource class is exposed by registering it within the SwordApplication run function.
+ *
+ * @author Jonathon Evans
+ * @version 0.0.1
+ *
+ * @see CaseNote
+ * @see CaseNoteResource
+ * @see CaseNoteDAO
+ */
 @Path("/api/v1/casenote")
 @Produces(MediaType.APPLICATION_JSON)
 public class CaseNoteResource {

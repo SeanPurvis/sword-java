@@ -15,12 +15,11 @@ import edu.usm.sosw.sword.api.Case;
  * 
  * @author Jonathon Evans
  * @version 0.0.1 
- * @type Counselor Object
+ * @type Case Object
  * @return a new <code>Case</code> object with SQL Query results populated into the data members.
  * @see Case 
  * @see CaseDAO
  */
-
 public class CaseMapper implements ResultSetMapper<Case>{
 	public Case map(int index, ResultSet r, StatementContext ctx) throws SQLException {
 		return new Case(

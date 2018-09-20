@@ -20,8 +20,9 @@ import java.util.List;
  *
  * @author Sean T. Purvis
  * @version 0.0.1
- * @see edu.usm.sosw.sword.api.RunningRecord
- * @see edu.usm.sosw.sword.mappers.RunningRecordMapper
+ * @see RunningRecord
+ * @see RunningRecordMapper
+ * @see RunningRecordResource
  */
 @RegisterMapper(RunningRecordMapper.class)
 public interface RunningRecordDAO {
