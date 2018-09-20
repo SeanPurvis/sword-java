@@ -8,6 +8,15 @@ public class Personal {
 	public Personal() {
 		//Needed for Jackson deserialization
 	}
+	
+	public Personal(
+			int id,
+			String category,
+			String description) {
+		this.id = id;
+		this.category = category;
+		this.description = description;
+	}
 
 	public int getId() {
 		return id;

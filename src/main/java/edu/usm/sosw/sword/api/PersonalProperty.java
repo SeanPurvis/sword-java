@@ -37,6 +37,69 @@ public class PersonalProperty {
 	public PersonalProperty() {
 		//Needed for Jackson deserialization
 	}
+	
+	public PersonalProperty(
+			int caseid,
+			int id,
+			int locker_number,
+			String currency,
+			String belt,
+			String bra,
+			String dress,
+			String hat,
+			String jacket,
+			String leggings,
+			String pants,
+			String shirt,
+			String shoes,
+			String shorts,
+			String skirt,
+			String socks,
+			String underwear,
+			String bracelet,
+			String earrings,
+			String necklace,
+			String ring,
+			String watch,
+			String drugs,
+			String lighter,
+			String other_drugs,
+			String tobacco,
+			String weapons,
+			String other_property,
+			Date release_date,
+			String release_to) {
+		this.caseid = caseid;
+		this.id = id;
+		this.locker_number = locker_number;
+		this.currency = currency;
+		this.belt = belt;
+		this.bra = bra;
+		this.dress = dress;
+		this.hat = hat;
+		this.jacket = jacket;
+		this.leggings = leggings;
+		this.pants = pants;
+		this.shirt = shirt;
+		this.shoes = shoes;
+		this.shorts = shorts;
+		this.skirt = skirt;
+		this.socks = socks;
+		this.underwear = underwear;
+		this.bracelet = bracelet;
+		this.earrings = earrings;
+		this.necklace = necklace;
+		this.ring = ring;
+		this.watch = watch;
+		this.drugs = drugs;
+		this.lighter = lighter;
+		this.other_drugs = other_drugs;
+		this.tobacco = tobacco;
+		this.weapons = weapons;
+		this.other_property = other_property;
+		this.release_date = release_date;
+		this.release_to = release_to;
+	}
 
 	public int getCaseid() {
 		return caseid;
